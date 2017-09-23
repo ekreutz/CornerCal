@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -11,7 +12,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CornerCal" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="3bX-Tg-Ykk" customClass="MenuController" customModule="CornerCal" customModuleProvider="target">
@@ -21,6 +22,13 @@
         </customObject>
         <menu id="Rpa-pt-dYz">
             <items>
+                <menuItem title="[Calendar Collection]" id="VJE-7c-auX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <outlet property="view" destination="fzv-0D-4Z7" id="d2w-0e-yo2"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="v78-bY-gSw"/>
                 <menuItem title="Quit" id="lKd-S3-nta" userLabel="Quit">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -28,6 +36,35 @@
                     </connections>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="-236" y="-190"/>
         </menu>
+        <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="fzv-0D-4Z7">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <clipView key="contentView" drawsBackground="NO" id="yXD-ij-U1c">
+                <rect key="frame" x="1" y="1" width="248" height="158"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <collectionView id="NFB-RO-aiy">
+                        <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Rq9-El-gNQ">
+                            <size key="itemSize" width="50" height="50"/>
+                        </collectionViewFlowLayout>
+                        <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </collectionView>
+                </subviews>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </clipView>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="0lc-FQ-BOd">
+                <rect key="frame" x="1" y="144" width="233" height="15"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="uA3-R0-JF9">
+                <rect key="frame" x="234" y="1" width="15" height="143"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <point key="canvasLocation" x="-237" y="69"/>
+        </scrollView>
     </objects>
 </document>

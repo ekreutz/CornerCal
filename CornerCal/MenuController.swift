@@ -9,7 +9,7 @@
 import Cocoa
 
 class MenuController: NSObject {
-    
+
     @IBOutlet weak var statusMenu: NSMenu!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
