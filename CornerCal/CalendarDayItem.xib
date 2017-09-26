@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CalendarDayItem" customModule="CornerCal" customModuleProvider="target"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VYy-zd-W7P">
+                    <rect key="frame" x="2" y="4" width="23" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="23" id="1UL-AK-rQA"/>
+                        <constraint firstAttribute="height" constant="18" id="Qef-uW-3Pn"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" title="00" drawsBackground="YES" id="KiO-Ib-eiO">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="VYy-zd-W7P" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="7AI-Eo-Y9k"/>
+                <constraint firstItem="VYy-zd-W7P" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="SPD-lO-yXi"/>
+            </constraints>
+        </customView>
+        <collectionViewItem id="qNE-OW-YOz" customClass="CalendarDayItem" customModule="CornerCal" customModuleProvider="target">
+            <connections>
+                <outlet property="textField" destination="VYy-zd-W7P" id="BmM-zv-B9E"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="Yss-Am-J7R"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+</document>
