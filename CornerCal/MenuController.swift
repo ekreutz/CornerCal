@@ -14,6 +14,7 @@ class MenuController: NSObject, NSCollectionViewDataSource {
     // let firstCol = ["", "41", "42", "43", "44", "45", "46"]
     
     let calendar = Calendar.autoupdatingCurrent
+    let formatter = DateFormatter()
     var dayOneInView: Date? = nil
     var todayInMonths: Date? = nil
     
@@ -64,8 +65,7 @@ class MenuController: NSObject, NSCollectionViewDataSource {
     }
     
     func initDates() {
-        let now = Date.init(timeIntervalSinceNow: 0)
-        let calendar = Calendar.autoupdatingCurrent
+        let now = Date(timeIntervalSinceNow: 0)
         
         let startingDate = calendar.date(byAdding: Calendar.Component.month, value: monthsFromNow, to: now)!
         let dayInMonth = calendar.component(Calendar.Component.day, from: startingDate)
@@ -78,13 +78,41 @@ class MenuController: NSObject, NSCollectionViewDataSource {
         todayInMonths = startingDate
         dayOneInView = firstViewDay
         
-        let formatter = DateFormatter()
-        formatter.calendar = calendar
-        formatter.dateFormat = "MMMM yyyy"
-        monthLabel.stringValue = formatter.string(from: todayInMonths!)
+        let monthFormatter = DateFormatter()
+        monthFormatter.calendar = calendar
+        monthFormatter.dateFormat = "MMMM yyyy"
+        monthLabel.stringValue = monthFormatter.string(from: todayInMonths!)
     }
     
-
+    var shownTime: Date? = nil
+    
+    @objc func setStatusMenuLabelToTime() {
+        formatter.dateFormat = "EE dd MMM, HH:mm:ss"
+        statusItem.title = formatter.string(from: shownTime!)
+        
+        shownTime = calendar.date(byAdding: .second, value: 1, to: shownTime!)
+    }
+    
+    var timer = Timer()
+    
+    func startClockTimer() {
+        // shownTime = calendar.date(bySetting: .minute, value: 0, of: shownTime!)
+        //let seconds = calendar.component(.second, from: shownTime!)
+        
+        shownTime = Date(timeIntervalSinceNow: 2)
+        
+        //shownTime = calendar.date(byAdding: .second, value: -seconds, to: shownTime!)
+        
+        //formatter.dateFormat = "EE dd MMM, HH:mm:ss"
+        //var tester = formatter.string(from: shownTime!)
+        //print(tester)
+        //tester = formatter.string(from: Date(timeIntervalSinceNow: 0))
+        //print(tester)
+        
+        timer = Timer(fireAt: shownTime!, interval: 1, target: self, selector: #selector(setStatusMenuLabelToTime), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode: .commonModes)
+    }
+    
     @IBOutlet weak var statusMenu: NSMenu!
     
     @IBOutlet weak var monthLabel: NSTextField!
@@ -94,9 +122,11 @@ class MenuController: NSObject, NSCollectionViewDataSource {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     override func awakeFromNib() {
-        statusItem.title = "CornerCal"
+        shownTime = Date(timeIntervalSinceNow: 0)
+        setStatusMenuLabelToTime()
         statusItem.menu = statusMenu
         
+        startClockTimer()
         initDates()
     }
     

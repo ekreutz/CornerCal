@@ -23,6 +23,7 @@
                 <outlet property="statusMenu" destination="Rpa-pt-dYz" id="OOU-iP-FpU"/>
             </connections>
         </customObject>
+        <customObject id="QOU-L3-0se" customClass="MenuDelegate" customModule="CornerCal" customModuleProvider="target"/>
         <menu id="Rpa-pt-dYz">
             <items>
                 <menuItem title="[Calendar Collection]" id="VJE-7c-auX">
@@ -32,6 +33,9 @@
                     </connections>
                 </menuItem>
             </items>
+            <connections>
+                <outlet property="delegate" destination="QOU-L3-0se" id="IR4-Fi-zsD"/>
+            </connections>
             <point key="canvasLocation" x="-236" y="-190"/>
         </menu>
         <customView id="w1C-ng-hpz">
@@ -42,8 +46,8 @@
                     <rect key="frame" x="14" y="222" width="238" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="September" id="0mr-9E-muV">
-                        <font key="font" metaFont="systemLight" size="22"/>
-                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <font key="font" metaFont="systemThin" size="22"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -78,9 +82,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCH-5I-Tyq">
-                    <rect key="frame" x="20" y="8" width="40" height="19"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tCH-5I-Tyq">
+                    <rect key="frame" x="20" y="8" width="40" height="20"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="20" id="62W-1Q-axq"/>
                         <constraint firstAttribute="width" constant="40" id="dou-7Y-eTN"/>
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="◀" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="bzQ-J9-ujD">
@@ -92,10 +97,11 @@
                         <action selector="leftClicked:" target="3bX-Tg-Ykk" id="V42-yq-ZrS"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ys-Mb-HqB">
-                    <rect key="frame" x="216" y="8" width="40" height="19"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2ys-Mb-HqB">
+                    <rect key="frame" x="216" y="8" width="40" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="Nih-58-FhP"/>
+                        <constraint firstAttribute="height" constant="20" id="tVZ-s8-hPR"/>
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="▶" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="7X1-dq-Gyk">
                         <behavior key="behavior" lightByContents="YES"/>
@@ -106,10 +112,11 @@
                         <action selector="rightClicked:" target="3bX-Tg-Ykk" id="7td-TP-oDB"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Spj-YJ-alh">
-                    <rect key="frame" x="118" y="8" width="40" height="19"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Spj-YJ-alh">
+                    <rect key="frame" x="118" y="8" width="40" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="Lds-Sy-oyI"/>
+                        <constraint firstAttribute="height" constant="20" id="f3p-8E-fbj"/>
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="●" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="68I-Eo-dmd">
                         <behavior key="behavior" lightByContents="YES"/>
@@ -122,12 +129,16 @@
                 </button>
             </subviews>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="2ys-Mb-HqB" secondAttribute="trailing" constant="20" id="32b-ZE-Hk0"/>
+                <constraint firstAttribute="bottom" secondItem="tCH-5I-Tyq" secondAttribute="bottom" constant="8" id="7Cf-QJ-8Ub"/>
+                <constraint firstItem="Spj-YJ-alh" firstAttribute="centerX" secondItem="w1C-ng-hpz" secondAttribute="centerX" id="BQR-ro-1Qg"/>
+                <constraint firstAttribute="bottom" secondItem="Spj-YJ-alh" secondAttribute="bottom" constant="8" id="BdQ-Kb-hir"/>
                 <constraint firstItem="tCH-5I-Tyq" firstAttribute="leading" secondItem="w1C-ng-hpz" secondAttribute="leading" constant="20" id="DJe-yi-chv"/>
-                <constraint firstAttribute="trailing" secondItem="2ys-Mb-HqB" secondAttribute="trailing" constant="20" id="N1m-V8-neB"/>
                 <constraint firstAttribute="bottom" secondItem="fzv-0D-4Z7" secondAttribute="bottom" constant="30" id="W17-tV-7G8"/>
                 <constraint firstItem="fzv-0D-4Z7" firstAttribute="leading" secondItem="w1C-ng-hpz" secondAttribute="leading" constant="10" id="cuI-Yr-8eI"/>
                 <constraint firstAttribute="trailing" secondItem="fzv-0D-4Z7" secondAttribute="trailing" constant="10" id="gPW-YW-sCn"/>
                 <constraint firstItem="fzv-0D-4Z7" firstAttribute="top" secondItem="w1C-ng-hpz" secondAttribute="top" constant="40" id="iUK-2w-Adw"/>
+                <constraint firstAttribute="bottom" secondItem="2ys-Mb-HqB" secondAttribute="bottom" constant="8" id="ilP-04-B2V"/>
             </constraints>
             <point key="canvasLocation" x="-109" y="127.5"/>
         </customView>
