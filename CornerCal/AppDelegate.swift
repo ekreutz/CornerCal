@@ -10,9 +10,10 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to launch your application
+        // Insert code here to launch your application        
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

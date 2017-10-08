@@ -14,6 +14,7 @@ class MenuController: NSObject, NSCollectionViewDataSource {
     // let firstCol = ["", "41", "42", "43", "44", "45", "46"]
     
     let calendar = Calendar.autoupdatingCurrent
+    let locale = Locale.autoupdatingCurrent
     let formatter = DateFormatter()
     var dayOneInView: Date? = nil
     var todayInMonths: Date? = nil
@@ -87,7 +88,8 @@ class MenuController: NSObject, NSCollectionViewDataSource {
     var shownTime: Date? = nil
     
     @objc func setStatusMenuLabelToTime() {
-        formatter.dateFormat = "EE dd MMM, HH:mm:ss"
+        
+        
         statusItem.title = formatter.string(from: shownTime!)
         
         shownTime = calendar.date(byAdding: .second, value: 1, to: shownTime!)
@@ -109,6 +111,7 @@ class MenuController: NSObject, NSCollectionViewDataSource {
         //tester = formatter.string(from: Date(timeIntervalSinceNow: 0))
         //print(tester)
         
+        
         timer = Timer(fireAt: shownTime!, interval: 1, target: self, selector: #selector(setStatusMenuLabelToTime), userInfo: nil, repeats: true)
         RunLoop.current.add(timer, forMode: .commonModes)
     }
@@ -122,6 +125,13 @@ class MenuController: NSObject, NSCollectionViewDataSource {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     override func awakeFromNib() {
+        //formatter.dateFormat = "EE dd MMM, HH:mm:ss"
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        formatter.locale = locale
+        
+        DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: locale)
+        
         shownTime = Date(timeIntervalSinceNow: 0)
         setStatusMenuLabelToTime()
         statusItem.menu = statusMenu

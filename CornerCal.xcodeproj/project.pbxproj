@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		223410AD1F7B5BB30051871C /* MenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223410AC1F7B5BB30051871C /* MenuDelegate.swift */; };
 		229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07A41F76EFEA00A22E37 /* AppDelegate.swift */; };
 		229D07A71F76EFEA00A22E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A61F76EFEA00A22E37 /* Assets.xcassets */; };
 		229D07AA1F76EFEA00A22E37 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A81F76EFEA00A22E37 /* MainMenu.xib */; };
@@ -17,7 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		223410AC1F7B5BB30051871C /* MenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDelegate.swift; sourceTree = "<group>"; };
 		229D07A11F76EFEA00A22E37 /* CornerCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		229D07A41F76EFEA00A22E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		229D07A61F76EFEA00A22E37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,13 +59,12 @@
 			children = (
 				229D07A41F76EFEA00A22E37 /* AppDelegate.swift */,
 				229D07A61F76EFEA00A22E37 /* Assets.xcassets */,
-				229D07A81F76EFEA00A22E37 /* MainMenu.xib */,
 				229D07AB1F76EFEA00A22E37 /* Info.plist */,
 				229D07AC1F76EFEA00A22E37 /* CornerCal.entitlements */,
+				229D07A81F76EFEA00A22E37 /* MainMenu.xib */,
 				229D07B21F76FB0200A22E37 /* MenuController.swift */,
 				229D07C11F78709A00A22E37 /* CalendarDayItem.swift */,
 				229D07C21F78709A00A22E37 /* CalendarDayItem.xib */,
-				223410AC1F7B5BB30051871C /* MenuDelegate.swift */,
 			);
 			path = CornerCal;
 			sourceTree = "<group>";
@@ -145,7 +142,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				229D07B31F76FB0200A22E37 /* MenuController.swift in Sources */,
-				223410AD1F7B5BB30051871C /* MenuDelegate.swift in Sources */,
 				229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */,
 				229D07C31F78709A00A22E37 /* CalendarDayItem.swift in Sources */,
 			);
