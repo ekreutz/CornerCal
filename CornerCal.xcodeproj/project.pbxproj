@@ -10,9 +10,10 @@
 		229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07A41F76EFEA00A22E37 /* AppDelegate.swift */; };
 		229D07A71F76EFEA00A22E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A61F76EFEA00A22E37 /* Assets.xcassets */; };
 		229D07AA1F76EFEA00A22E37 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A81F76EFEA00A22E37 /* MainMenu.xib */; };
-		229D07B31F76FB0200A22E37 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07B21F76FB0200A22E37 /* MenuController.swift */; };
+		229D07B31F76FB0200A22E37 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07B21F76FB0200A22E37 /* MainMenuController.swift */; };
 		229D07C31F78709A00A22E37 /* CalendarDayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07C11F78709A00A22E37 /* CalendarDayItem.swift */; };
 		229D07C41F78709A00A22E37 /* CalendarDayItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229D07C21F78709A00A22E37 /* CalendarDayItem.xib */; };
+		22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D879111F8AD27A00D1956C /* CalendarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,9 +23,10 @@
 		229D07A91F76EFEA00A22E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		229D07AB1F76EFEA00A22E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		229D07AC1F76EFEA00A22E37 /* CornerCal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CornerCal.entitlements; sourceTree = "<group>"; };
-		229D07B21F76FB0200A22E37 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		229D07B21F76FB0200A22E37 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		229D07C11F78709A00A22E37 /* CalendarDayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayItem.swift; sourceTree = "<group>"; };
 		229D07C21F78709A00A22E37 /* CalendarDayItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarDayItem.xib; sourceTree = "<group>"; };
+		22D879111F8AD27A00D1956C /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,8 @@
 				229D07AB1F76EFEA00A22E37 /* Info.plist */,
 				229D07AC1F76EFEA00A22E37 /* CornerCal.entitlements */,
 				229D07A81F76EFEA00A22E37 /* MainMenu.xib */,
-				229D07B21F76FB0200A22E37 /* MenuController.swift */,
+				229D07B21F76FB0200A22E37 /* MainMenuController.swift */,
+				22D879111F8AD27A00D1956C /* CalendarController.swift */,
 				229D07C11F78709A00A22E37 /* CalendarDayItem.swift */,
 				229D07C21F78709A00A22E37 /* CalendarDayItem.xib */,
 			);
@@ -141,7 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				229D07B31F76FB0200A22E37 /* MenuController.swift in Sources */,
+				229D07B31F76FB0200A22E37 /* MainMenuController.swift in Sources */,
+				22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */,
 				229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */,
 				229D07C31F78709A00A22E37 /* CalendarDayItem.swift in Sources */,
 			);

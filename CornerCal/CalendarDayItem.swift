@@ -10,8 +10,8 @@ import Cocoa
 
 class CalendarDayItem: NSCollectionViewItem {
     
-    public func setToday(today: Bool) {
-        if (today) {
+    public func setHasRedBackground(hasRedBackground: Bool) {
+        if (hasRedBackground) {
             view.layer?.cornerRadius = (view.layer?.frame.width)! / 2
             view.layer?.backgroundColor = NSColor.red.cgColor
             textField?.textColor = NSColor.white
@@ -22,8 +22,8 @@ class CalendarDayItem: NSCollectionViewItem {
         }
     }
     
-    public func setIsParfOfSelectedMonth(isPart: Bool) {
-        view.layer?.opacity = isPart ? 1 : 0.5
+    public func setPartlyTransparent(partlyTransparent: Bool) {
+        view.layer?.opacity = partlyTransparent ? 0.5 : 1.0
     }
     
     public func setBold(bold: Bool) {
@@ -37,8 +37,8 @@ class CalendarDayItem: NSCollectionViewItem {
     
     
     
-    public func setDate(date: String) {
-        textField?.stringValue = date
+    public func setText(text: String) {
+        textField?.stringValue = text
     }
     
     override func viewDidLoad() {

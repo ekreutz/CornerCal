@@ -16,11 +16,11 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CornerCal" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="3bX-Tg-Ykk" customClass="MenuController" customModule="CornerCal" customModuleProvider="target">
+        <customObject id="3bX-Tg-Ykk" customClass="MainMenuController" customModule="CornerCal" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="maz-ht-22y" id="ygh-5h-rK8"/>
-                <outlet property="monthLabel" destination="YsJ-7U-xbh" id="3lC-l5-Okj"/>
-                <outlet property="statusMenu" destination="Rpa-pt-dYz" id="OOU-iP-FpU"/>
+                <outlet property="collectionView" destination="maz-ht-22y" id="stj-LN-h6m"/>
+                <outlet property="monthLabel" destination="YsJ-7U-xbh" id="xbD-Mq-kMf"/>
+                <outlet property="statusMenu" destination="Rpa-pt-dYz" id="3aK-wK-BeF"/>
             </connections>
         </customObject>
         <menu id="Rpa-pt-dYz">
@@ -90,7 +90,7 @@
                         <string key="keyEquivalent"></string>
                     </buttonCell>
                     <connections>
-                        <action selector="leftClicked:" target="3bX-Tg-Ykk" id="yL5-ni-AH8"/>
+                        <action selector="leftClicked:" target="3bX-Tg-Ykk" id="7aQ-46-dan"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iHR-VQ-n57">
@@ -105,7 +105,7 @@
                         <string key="keyEquivalent"></string>
                     </buttonCell>
                     <connections>
-                        <action selector="rightClicked:" target="3bX-Tg-Ykk" id="fiP-LX-P1U"/>
+                        <action selector="rightClicked:" target="3bX-Tg-Ykk" id="gHb-fz-AaE"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FIe-7Z-FMu">
@@ -120,7 +120,7 @@
                         <string key="keyEquivalent"></string>
                     </buttonCell>
                     <connections>
-                        <action selector="clearMonthHopping:" target="3bX-Tg-Ykk" id="gSh-b5-Za7"/>
+                        <action selector="clearMonthHopping:" target="3bX-Tg-Ykk" id="W0R-V5-USV"/>
                     </connections>
                 </button>
             </subviews>
