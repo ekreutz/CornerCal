@@ -72,7 +72,7 @@ class CalendarController: NSObject {
         let fireAfter = 60 - calendar.component(.second, from: Date())
         
         timer = Timer(fire: calendar.date(byAdding: .second, value: fireAfter, to: Date())!, interval: 60, repeats: true, block: onTick)
-        RunLoop.main.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
         
         onTick(timer: timer)
     }
