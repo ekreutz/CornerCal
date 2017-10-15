@@ -16,9 +16,11 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CornerCal" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="SjA-MT-ZkN" customClass="CalendarController" customModule="CornerCal" customModuleProvider="target"/>
         <customObject id="3bX-Tg-Ykk" customClass="MainMenuController" customModule="CornerCal" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="maz-ht-22y" id="stj-LN-h6m"/>
+                <outlet property="controller" destination="SjA-MT-ZkN" id="UEa-Cz-Kob"/>
                 <outlet property="monthLabel" destination="YsJ-7U-xbh" id="xbD-Mq-kMf"/>
                 <outlet property="statusMenu" destination="Rpa-pt-dYz" id="3aK-wK-BeF"/>
             </connections>

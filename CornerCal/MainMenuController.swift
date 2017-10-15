@@ -10,8 +10,6 @@ import Cocoa
 
 class MainMenuController: NSObject, NSCollectionViewDataSource {
     
-    let controller = CalendarController()
-    
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return controller.itemCount()
     }
@@ -24,17 +22,17 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
             return item
         }
         
-        calendarItem.setBold(bold: false)
-        calendarItem.setText(text: controller.getItemAt(index: indexPath.item))
-        calendarItem.setPartlyTransparent(partlyTransparent: false)
-        calendarItem.setHasRedBackground(hasRedBackground: false)
+        let day = controller.getItemAt(index: indexPath.item)
+        
+        calendarItem.setBold(bold: !day.isNumber)
+        calendarItem.setText(text: day.text)
+        calendarItem.setPartlyTransparent(partlyTransparent: !day.isCurrentMonth)
+        calendarItem.setHasRedBackground(hasRedBackground: day.isToday)
         
         return calendarItem
     }
     
-    func setStatusMenuLabelToTime() {
-        statusItem.title = controller.getFormattedDate()
-    }
+    @IBOutlet weak var controller: CalendarController!
     
     @IBOutlet weak var statusMenu: NSMenu!
     
@@ -44,9 +42,18 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
+    private func updateMenuTime() {
+        statusItem.title = controller.getFormattedDate()
+    }
+    
+    private func updateCalendar() {
+        monthLabel.stringValue = controller.getMonth()
+        collectionView.reloadData()
+    }
+    
     override func awakeFromNib() {
         statusItem.menu = statusMenu
-        setStatusMenuLabelToTime()
+        controller.subscribe(onTimeUpdate: updateMenuTime, onCalendarUpdate: updateCalendar)
     }
     
     @IBAction func leftClicked(_ sender: NSButton) {
