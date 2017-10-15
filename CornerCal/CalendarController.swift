@@ -114,6 +114,7 @@ class CalendarController: NSObject {
         self.onTimeUpdate = onTimeUpdate
         self.onCalendarUpdate = onCalendarUpdate
         initTiming()
+        onCalendarUpdate()
     }
     
     func itemCount() -> Int {
