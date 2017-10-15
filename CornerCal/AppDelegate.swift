@@ -11,6 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    @IBOutlet weak var appController: MainMenuController!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to launch your application        
         
@@ -20,6 +22,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    func applicationDidUpdate(_ notification: Notification) {
+        // Make sure that the internal state is up-to-date
+        appController.updateState()
+    }
 
 }
 

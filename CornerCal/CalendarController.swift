@@ -22,7 +22,7 @@ class CalendarController: NSObject {
     let formatter = DateFormatter()
     let monthFormatter = DateFormatter()
     var dayZero: Date? = nil
-    var timer = Timer()
+    var timer: Timer? = nil
     
     var shownItemCount = 0
     var weekdays: [String] = []
@@ -71,10 +71,13 @@ class CalendarController: NSObject {
     private func initTiming() {
         let fireAfter = 60 - calendar.component(.second, from: Date())
         
-        timer = Timer(fire: calendar.date(byAdding: .second, value: fireAfter, to: Date())!, interval: 60, repeats: true, block: onTick)
-        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        timer?.invalidate()
         
-        onTick(timer: timer)
+        timer = Timer(fire: calendar.date(byAdding: .second, value: fireAfter, to: Date())!, interval: 60, repeats: true, block: onTick)
+        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+        
+        // tick once to update straight away
+        onTick(timer: timer!)
     }
     
     private func calculateDayZero() {

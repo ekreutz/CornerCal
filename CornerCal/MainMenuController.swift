@@ -51,7 +51,7 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         collectionView.reloadData()
     }
     
-    override func awakeFromNib() {
+    func updateState() {
         statusItem.menu = statusMenu
         controller.subscribe(onTimeUpdate: updateMenuTime, onCalendarUpdate: updateCalendar)
     }
