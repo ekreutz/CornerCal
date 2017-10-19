@@ -40,9 +40,7 @@ class CalendarController: NSObject {
     override init() {
         super.init()
         
-        formatter.dateStyle = .long
-        formatter.timeStyle = .short
-        formatter.locale = locale
+        setDateFormat()
         
         monthFormatter.locale = locale
         monthFormatter.dateFormat = "MMMM yyyy"
@@ -55,6 +53,19 @@ class CalendarController: NSObject {
         
         calculateDayZero()
         updateCurrentlyShownDays()
+    }
+    
+    private func setDateFormat() {
+        let languageIdentifier = Locale.preferredLanguages[0]
+        formatter.locale = Locale.init(identifier: languageIdentifier)
+        
+        formatter.setLocalizedDateFormatFromTemplate("EEEdMMM")
+        let dateFormat = formatter.dateFormat!.replacingOccurrences(of: ",", with: "")
+        
+        formatter.setLocalizedDateFormatFromTemplate("HHmm")
+        let timeFormat = formatter.dateFormat!
+        
+        formatter.dateFormat = String(format: "%@  %@", dateFormat, timeFormat)
     }
     
     private func onTick(timer: Timer) {
