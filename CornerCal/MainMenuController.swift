@@ -40,10 +40,21 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     
     @IBOutlet weak var collectionView: NSCollectionView!
     
+    @IBOutlet weak var settingsWindow: NSWindow!
+    
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     private func updateMenuTime() {
         statusItem.title = controller.getFormattedDate()
+        
+        // notice how we're setting the parent length smaller than the actual item length
+        // this, combined with a little hack in CalendarController forces the label
+        // to be left-aligned in its parent, hence reducing wobble when showing seconds in the clock
+        let desiredLength = (statusItem.button?.fittingSize.width)! - 15
+        let observedLength = statusItem.length
+        if (abs(desiredLength - observedLength) > 10) {
+            statusItem.length = desiredLength
+        }
     }
     
     private func updateCalendar() {
@@ -56,6 +67,11 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         controller.subscribe(onTimeUpdate: updateMenuTime, onCalendarUpdate: updateCalendar)
     }
     
+    @IBAction func openSettingsClicked(_ sender: NSMenuItem) {
+        let settingsWindowController = NSWindowController.init(window: settingsWindow)
+        settingsWindowController.showWindow(sender)
+    }
+    
     @IBAction func leftClicked(_ sender: NSButton) {
         controller.decrementMonth()
     }
@@ -64,7 +80,7 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         controller.incrementMonth()
     }
     
-    @IBAction func clearMonthHopping(_ sender: NSButton) {
+    @IBAction func clearMonthHopping(_ sender: Any) {
         controller.resetMonth()
     }
 

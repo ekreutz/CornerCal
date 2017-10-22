@@ -18,9 +18,9 @@ struct Day {
 class CalendarController: NSObject {
     
     let calendar = Calendar.autoupdatingCurrent
-    let locale = Locale.autoupdatingCurrent
     let formatter = DateFormatter()
     let monthFormatter = DateFormatter()
+    var locale: Locale!
     var dayZero: Date? = nil
     var timer: Timer? = nil
     
@@ -33,6 +33,7 @@ class CalendarController: NSObject {
     var lastFirstWeekdayLastMonth: Date? = nil
     var lastTick: Date? = Date()
     var tick: Date? = nil
+    var tickInterval: Double = 60
     
     var onTimeUpdate: (() -> ())? = nil
     var onCalendarUpdate: (() -> ())? = nil
@@ -40,7 +41,8 @@ class CalendarController: NSObject {
     override init() {
         super.init()
         
-        setDateFormat()
+        let languageIdentifier = Locale.preferredLanguages[0]
+        locale = Locale.init(identifier: languageIdentifier)
         
         monthFormatter.locale = locale
         monthFormatter.dateFormat = "MMMM yyyy"
@@ -55,39 +57,74 @@ class CalendarController: NSObject {
         updateCurrentlyShownDays()
     }
     
-    private func setDateFormat() {
-        let languageIdentifier = Locale.preferredLanguages[0]
-        formatter.locale = Locale.init(identifier: languageIdentifier)
+    func setDateFormat() {
+        let defaults = UserDefaults.standard
+        let keys = SettingsKeys()
         
-        formatter.setLocalizedDateFormatFromTemplate("EEEdMMM")
-        let dateFormat = formatter.dateFormat!.replacingOccurrences(of: ",", with: "")
+        let showSeconds = defaults.bool(forKey: keys.SHOW_SECONDS_KEY)
+        let use24Hours = defaults.bool(forKey: keys.USE_HOURS_24_KEY)
+        let showAMPM = defaults.bool(forKey: keys.SHOW_AM_PM_KEY)
+        let showDate = defaults.bool(forKey: keys.SHOW_DATE_KEY)
+        let showDayOfWeek = defaults.bool(forKey: keys.SHOW_DAY_OF_WEEK_KEY)
+        let showAnyDateInfo = showDayOfWeek || showDate
         
-        formatter.setLocalizedDateFormatFromTemplate("HHmm")
-        let timeFormat = formatter.dateFormat!
+        formatter.locale = locale
         
-        formatter.dateFormat = String(format: "%@  %@", dateFormat, timeFormat)
+        var dateTemplate = ""
+        dateTemplate += (showDayOfWeek) ? "EEE" : ""
+        dateTemplate += (showDate) ? "dMMM" : ""
+        
+        formatter.setLocalizedDateFormatFromTemplate(dateTemplate)
+        let dateFormat = (showAnyDateInfo) ? formatter.dateFormat!.replacingOccurrences(of: ",", with: "") + "  " : ""
+        
+        var timeTemplate = "mm"
+        timeTemplate += (showSeconds) ? "ss" : ""
+        timeTemplate += (use24Hours) ? "H" : "h"
+        
+        formatter.setLocalizedDateFormatFromTemplate(timeTemplate)
+        var timeFormat = formatter.dateFormat!
+        
+        if (use24Hours || !showAMPM) {
+            timeFormat = timeFormat.replacingOccurrences(of: "a", with: "")
+        }
+        
+        formatter.dateFormat = String(format: "%@%@", dateFormat, timeFormat)
+        initTiming(useSeconds: showSeconds)
     }
     
     private func onTick(timer: Timer) {
-        tick = Date()
+        tick = calendar.date(byAdding: .second, value: Int(tickInterval), to: lastTick!)
         
         onTimeUpdate?()
         if (!calendar.isDate(tick!, equalTo: lastTick!, toGranularity: .day)) {
             onCalendarUpdate?()
         }
         
+        let now = Date()
+        let timeDeviation = abs((tick?.timeIntervalSince1970)! - now.timeIntervalSince1970)
+        
+        // allow maximum time deviation of 1.5 seconds
+        if (timeDeviation > 0.5) {
+            tick = now
+        }
+        
         lastTick = tick
     }
     
-    private func initTiming() {
-        let fireAfter = 60 - calendar.component(.second, from: Date())
+    private func initTiming(useSeconds: Bool) {
+        tickInterval = (useSeconds) ? 1 : 60
+        let now = Date()
+        let fireAfter = (useSeconds) ? 1 : 60 - calendar.component(.second, from: now)
         
+        // kill any previous timers
         timer?.invalidate()
         
-        timer = Timer(fire: calendar.date(byAdding: .second, value: fireAfter, to: Date())!, interval: 60, repeats: true, block: onTick)
+        let fireAt = calendar.date(byAdding: .second, value: fireAfter, to: now)!
+        timer = Timer(fire: fireAt, interval: tickInterval, repeats: true, block: onTick)
         RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
         
         // tick once to update straight away
+        lastTick = calendar.date(byAdding: .second, value: Int(-tickInterval), to: now)
         onTick(timer: timer!)
     }
     
@@ -127,8 +164,11 @@ class CalendarController: NSObject {
     func subscribe(onTimeUpdate: @escaping () -> (), onCalendarUpdate: @escaping () -> ()) {
         self.onTimeUpdate = onTimeUpdate
         self.onCalendarUpdate = onCalendarUpdate
-        initTiming()
-        onCalendarUpdate()
+        
+        if (tick == nil) {
+            onCalendarUpdate()
+            setDateFormat()
+        }
     }
     
     func itemCount() -> Int {
@@ -154,7 +194,10 @@ class CalendarController: NSObject {
     }
     
     func getFormattedDate() -> String {
-        return formatter.string(from: tick!)
+        // notice the added spaces around the date itself
+        // they're used as a hack to stop the date from wobbling around in the menu item
+        // basically, we're forcing an overflow here
+        return String(format: " %@    .", formatter.string(from: tick!))
     }
     
     func getMonth() -> String {

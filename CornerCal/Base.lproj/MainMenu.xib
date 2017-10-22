@@ -21,11 +21,22 @@
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="SjA-MT-ZkN" customClass="CalendarController" customModule="CornerCal" customModuleProvider="target"/>
+        <customObject id="MUN-z6-qDm" customClass="SettingsController" customModule="CornerCal" customModuleProvider="target">
+            <connections>
+                <outlet property="calendarController" destination="SjA-MT-ZkN" id="OCh-2P-AQ8"/>
+                <outlet property="showAMPMBox" destination="oWQ-Vp-99m" id="ZpL-b7-vyS"/>
+                <outlet property="showDateBox" destination="qib-nV-OYJ" id="mow-4N-fy8"/>
+                <outlet property="showDayOfWeekBox" destination="sw3-iQ-hki" id="VIU-SJ-3w9"/>
+                <outlet property="showSecondsBox" destination="DsG-Kg-fxR" id="a3Q-Z4-nsY"/>
+                <outlet property="use24HoursBox" destination="E8n-nc-rfB" id="O1q-22-QEZ"/>
+            </connections>
+        </customObject>
         <customObject id="3bX-Tg-Ykk" customClass="MainMenuController" customModule="CornerCal" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="maz-ht-22y" id="stj-LN-h6m"/>
                 <outlet property="controller" destination="SjA-MT-ZkN" id="UEa-Cz-Kob"/>
                 <outlet property="monthLabel" destination="YsJ-7U-xbh" id="xbD-Mq-kMf"/>
+                <outlet property="settingsWindow" destination="2fn-5w-bKg" id="AE8-fj-0H9"/>
                 <outlet property="statusMenu" destination="Rpa-pt-dYz" id="3aK-wK-BeF"/>
             </connections>
         </customObject>
@@ -35,6 +46,13 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <outlet property="view" destination="IaI-2C-Pq8" id="1ja-Id-oug"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="gAV-uw-5MX"/>
+                <menuItem title="Settings" id="GmB-eQ-Uw8">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openSettingsClicked:" target="3bX-Tg-Ykk" id="PDc-6Q-w7L"/>
                     </connections>
                 </menuItem>
             </items>
@@ -52,6 +70,9 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <action selector="clearMonthHopping:" target="3bX-Tg-Ykk" id="0AK-WZ-SvG"/>
+                    </connections>
                 </textField>
                 <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="0.0" verticalPageScroll="0.0" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="LBc-DF-c7o">
                     <rect key="frame" x="10" y="30" width="256" height="199"/>
@@ -144,7 +165,98 @@
                 <constraint firstItem="LBc-DF-c7o" firstAttribute="top" secondItem="IaI-2C-Pq8" secondAttribute="top" constant="40" id="sbp-a5-6NZ"/>
                 <constraint firstAttribute="bottom" secondItem="iHR-VQ-n57" secondAttribute="bottom" constant="8" id="sy9-wO-vg3"/>
             </constraints>
-            <point key="canvasLocation" x="-39" y="160"/>
+            <point key="canvasLocation" x="-110" y="132"/>
         </customView>
+        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2fn-5w-bKg">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+            <rect key="contentRect" x="564" y="309" width="410" height="250"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="410" height="250"/>
+            <value key="maxSize" type="size" width="410" height="250"/>
+            <view key="contentView" id="z56-gW-g35">
+                <rect key="frame" x="0.0" y="0.0" width="410" height="250"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="DsG-Kg-fxR">
+                        <rect key="frame" x="139" y="194" width="220" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show the time with seconds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YBS-XV-zIF">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="0DQ-oF-JYj"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="E8n-nc-rfB">
+                        <rect key="frame" x="139" y="162" width="220" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="X0B-xC-XWg">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="b6T-PW-c9s"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-Vp-99m">
+                        <rect key="frame" x="139" y="130" width="220" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show AM/PM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wHM-Vz-n6I">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="Em2-DF-Vt2"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qib-nV-OYJ">
+                        <rect key="frame" x="139" y="66" width="220" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show date" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BDg-ZQ-zFx">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="NrB-aN-wmX"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-RT-lm9">
+                        <rect key="frame" x="31" y="196" width="93" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Time options" usesSingleLineMode="YES" id="V7g-VS-7tR">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-hJ-eoO">
+                        <rect key="frame" x="31" y="68" width="93" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Date options" usesSingleLineMode="YES" id="fRr-jF-hAT">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-iQ-hki">
+                        <rect key="frame" x="139" y="34" width="220" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Show the day of the week" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJf-Zh-g4M">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="9o9-nG-vbd"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="MUN-z6-qDm" id="pyF-2S-Dp6"/>
+            </connections>
+            <point key="canvasLocation" x="-150" y="467"/>
+        </window>
     </objects>
 </document>
