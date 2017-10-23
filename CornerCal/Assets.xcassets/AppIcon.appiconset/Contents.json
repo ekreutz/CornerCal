@@ -23,31 +23,37 @@
     {
       "idiom" : "mac",
       "size" : "128x128",
+      "filename" : "Logo_128.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
       "size" : "128x128",
+      "filename" : "Logo_256.png",
       "scale" : "2x"
     },
     {
       "idiom" : "mac",
       "size" : "256x256",
+      "filename" : "Logo_256.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "256x256",
+      "idiom" : "mac",
+      "filename" : "Logo_512.png",
       "scale" : "2x"
     },
     {
       "idiom" : "mac",
       "size" : "512x512",
+      "filename" : "Logo_512.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
       "size" : "512x512",
+      "filename" : "Logo_1024.png",
       "scale" : "2x"
     }
   ],
