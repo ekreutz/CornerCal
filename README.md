@@ -14,7 +14,6 @@ The app is written in Swift 4.
 
 Incoming features:
 
-- Some sort of settings window (currently follows macOS system locale settings)
 - Keyboard shortcuts to click through calendar
 
 Features that you won't see in CornerCal (at least not by me!):
