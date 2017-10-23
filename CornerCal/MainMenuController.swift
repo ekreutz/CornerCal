@@ -36,7 +36,11 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     
     @IBOutlet weak var statusMenu: NSMenu!
     
-    @IBOutlet weak var monthLabel: NSTextField!
+    @IBOutlet weak var monthLabel: NSButton!
+    
+    @IBOutlet weak var buttonLeft: NSButton!
+    
+    @IBOutlet weak var buttonRight: NSButton!
     
     @IBOutlet weak var collectionView: NSCollectionView!
     
@@ -46,30 +50,65 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     
     private func updateMenuTime() {
         statusItem.title = controller.getFormattedDate()
-        
-        // notice how we're setting the parent length smaller than the actual item length
-        // this, combined with a little hack in CalendarController forces the label
-        // to be left-aligned in its parent, hence reducing wobble when showing seconds in the clock
-        let desiredLength = (statusItem.button?.fittingSize.width)! - 15
-        let observedLength = statusItem.length
-        if (abs(desiredLength - observedLength) > 10) {
-            statusItem.length = desiredLength
-        }
     }
     
     private func updateCalendar() {
-        monthLabel.stringValue = controller.getMonth()
+        monthLabel.title = controller.getMonth()
+        applyUIModifications()
         collectionView.reloadData()
     }
     
-    func updateState() {
+    private func getBasicAttributes(button: NSButton, color: NSColor, alpha: CGFloat) -> [NSAttributedStringKey : Any] {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        return [
+            NSAttributedStringKey.foregroundColor: color.withAlphaComponent(alpha),
+            NSAttributedStringKey.font: NSFont.systemFont(ofSize: (button.font?.pointSize)!, weight: NSFont.Weight.light),
+            NSAttributedStringKey.backgroundColor: NSColor.clear,
+            NSAttributedStringKey.paragraphStyle: style,
+            NSAttributedStringKey.kern: 0.5 // some additional character spacing
+        ]
+    }
+    
+    private func applyButtonHighlightSettings(button: NSButton, isAccented: Bool) {
+        let color = (isAccented) ? NSColor.systemRed : NSColor.black
+        
+        let defaultAlpha: CGFloat = (isAccented) ? 1.0 : 0.75
+        let pressedAlpha: CGFloat = (isAccented) ? 0.70 : 0.45
+        
+        let defaultAttributes = getBasicAttributes(button: button, color: color, alpha: defaultAlpha)
+        let pressedAttributes = getBasicAttributes(button: button, color: color, alpha: pressedAlpha)
+        
+        button.attributedTitle = NSAttributedString(string: button.title, attributes: defaultAttributes)
+        button.attributedAlternateTitle = NSAttributedString(string: button.title, attributes: pressedAttributes)
+        button.alignment = .center
+    }
+    
+    private func applyUIModifications() {
+        statusItem.button?.font = NSFont.monospacedDigitSystemFont(ofSize: (statusItem.button?.font?.pointSize)!, weight: .regular)
+        
+        applyButtonHighlightSettings(button: monthLabel, isAccented: true)
+        applyButtonHighlightSettings(button: buttonLeft, isAccented: false)
+        applyButtonHighlightSettings(button: buttonRight, isAccented: false)
+    }
+    
+    func refreshState() {
         statusItem.menu = statusMenu
         controller.subscribe(onTimeUpdate: updateMenuTime, onCalendarUpdate: updateCalendar)
+
+    }
+    
+    func deactivate() {
+        controller.pause()
     }
     
     @IBAction func openSettingsClicked(_ sender: NSMenuItem) {
         let settingsWindowController = NSWindowController.init(window: settingsWindow)
         settingsWindowController.showWindow(sender)
+        
+        // bring settings window to front
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     @IBAction func leftClicked(_ sender: NSButton) {

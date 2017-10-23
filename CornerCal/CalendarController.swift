@@ -171,6 +171,11 @@ class CalendarController: NSObject {
         }
     }
     
+    func pause() {
+        timer?.invalidate()
+        tick = nil
+    }
+    
     func itemCount() -> Int {
         return shownItemCount
     }
@@ -197,7 +202,7 @@ class CalendarController: NSObject {
         // notice the added spaces around the date itself
         // they're used as a hack to stop the date from wobbling around in the menu item
         // basically, we're forcing an overflow here
-        return String(format: " %@    .", formatter.string(from: tick!))
+        return formatter.string(from: tick!)
     }
     
     func getMonth() -> String {

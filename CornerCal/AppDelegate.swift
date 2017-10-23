@@ -22,21 +22,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trySetDefaultValueFor(key: keys.SHOW_DAY_OF_WEEK_KEY, value: true)
         trySetDefaultValueFor(key: keys.USE_HOURS_24_KEY, value: true)
         trySetDefaultValueFor(key: keys.SHOW_AM_PM_KEY, value: true)
-        
-        print("will finish launching")
     }
     
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to launch your application
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        appController.refreshState()
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
-    func applicationDidUpdate(_ notification: Notification) {
-        // Make sure that the internal state is up-to-date
-        appController.updateState()
+    
+    func applicationDidChangeOcclusionState(_ notification: Notification) {
+        if (NSApp.occlusionState.contains(.visible)) {
+            // the app now became visible
+            appController.refreshState()
+        } else {
+            // none of the app is visible anymore, so pause everything
+            appController.deactivate()
+        }
     }
     
     private func defaultsContains(key: String) -> Bool {
