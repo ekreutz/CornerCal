@@ -8,8 +8,17 @@
 
 import Cocoa
 
+enum InterfaceStyle : String {
+    case Dark, Light
+
+    init() {
+        let type = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+        self = InterfaceStyle(rawValue: type)!
+    }
+}
+
 class MainMenuController: NSObject, NSCollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return controller.itemCount()
     }
@@ -47,7 +56,9 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     @IBOutlet weak var settingsWindow: NSWindow!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    
+
+    var settingMenuItem: NSMenuItem!
+
     private func updateMenuTime() {
         statusItem.title = controller.getFormattedDate()
     }
@@ -72,7 +83,16 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     }
     
     private func applyButtonHighlightSettings(button: NSButton, isAccented: Bool) {
-        let color = (isAccented) ? NSColor.systemRed : NSColor.black
+
+        var colorThemeIsAccented: NSColor = NSColor.systemRed
+        var colorThemeIsNotAccented: NSColor = NSColor.black
+
+        if InterfaceStyle() == .Dark {
+            colorThemeIsAccented = NSColor.white
+            colorThemeIsNotAccented = NSColor.white
+        }
+
+        let color = (isAccented) ? colorThemeIsAccented : colorThemeIsNotAccented
         
         let defaultAlpha: CGFloat = (isAccented) ? 1.0 : 0.75
         let pressedAlpha: CGFloat = (isAccented) ? 0.70 : 0.45
@@ -95,8 +115,15 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     
     func refreshState() {
         statusItem.menu = statusMenu
-        controller.subscribe(onTimeUpdate: updateMenuTime, onCalendarUpdate: updateCalendar)
 
+        //keep a copy of the setting
+        settingMenuItem = statusItem.menu?.item(at: 1)
+        //remove settings
+        statusItem.menu?.removeItem(at: 1)
+        //handle open, and close
+        statusItem.menu?.delegate = self
+
+        controller.subscribe(onTimeUpdate: updateMenuTime, onCalendarUpdate: updateCalendar)
     }
     
     func deactivate() {
@@ -123,4 +150,22 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         controller.resetMonth()
     }
 
+}
+
+extension MainMenuController : NSMenuDelegate {
+    //if keyboar alt key is press, add settings
+    func menuWillOpen(_ menu: NSMenu) {
+        guard let flags = NSApp.currentEvent?.modifierFlags else { return }
+        if flags.contains(.option) {
+            statusItem.menu?.addItem(settingMenuItem!)
+        }
+    }
+
+    //if closing and setting is display, just remove it.
+    func menuDidClose(_ menu: NSMenu) {
+        if statusItem.menu?.items.count == 2
+        {
+            statusItem.menu?.removeItem(at: 1)
+        }
+    }
 }
