@@ -71,11 +71,10 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         ]
     }
     
-    private func applyButtonHighlightSettings(button: NSButton, isAccented: Bool) {
-        let color = (isAccented) ? NSColor.systemRed : NSColor.black
-        
-        let defaultAlpha: CGFloat = (isAccented) ? 1.0 : 0.75
-        let pressedAlpha: CGFloat = (isAccented) ? 0.70 : 0.45
+    private func applyButtonHighlightSettings(button: NSButton) {
+        let color = NSColor.textColor
+        let defaultAlpha: CGFloat = 0.75
+        let pressedAlpha: CGFloat = 0.45
         
         let defaultAttributes = getBasicAttributes(button: button, color: color, alpha: defaultAlpha)
         let pressedAttributes = getBasicAttributes(button: button, color: color, alpha: pressedAlpha)
@@ -88,9 +87,9 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     private func applyUIModifications() {
         statusItem.button?.font = NSFont.monospacedDigitSystemFont(ofSize: (statusItem.button?.font?.pointSize)!, weight: .regular)
         
-        applyButtonHighlightSettings(button: monthLabel, isAccented: true)
-        applyButtonHighlightSettings(button: buttonLeft, isAccented: false)
-        applyButtonHighlightSettings(button: buttonRight, isAccented: false)
+        applyButtonHighlightSettings(button: monthLabel)
+        applyButtonHighlightSettings(button: buttonLeft)
+        applyButtonHighlightSettings(button: buttonRight)
     }
     
     func refreshState() {
