@@ -21,7 +21,6 @@ class CalendarController: NSObject {
     let formatter = DateFormatter()
     let monthFormatter = DateFormatter()
     var locale: Locale!
-    var dayZero: Date? = nil
     var timer: Timer? = nil
     
     var shownItemCount = 0
@@ -53,7 +52,6 @@ class CalendarController: NSObject {
         let maxWeeksInMonth = (calendar.maximumRange(of: .day)?.upperBound)! / daysInWeek
         shownItemCount = daysInWeek * (maxWeeksInMonth + 2 + 1)
         
-        calculateDayZero()
         updateCurrentlyShownDays()
     }
     
@@ -103,7 +101,7 @@ class CalendarController: NSObject {
         let now = Date()
         let timeDeviation = abs((tick?.timeIntervalSince1970)! - now.timeIntervalSince1970)
         
-        // allow maximum time deviation of 1.5 seconds
+        // allow maximum time deviation of 0.5 seconds
         if (timeDeviation > 0.5) {
             tick = now
         }
@@ -128,16 +126,6 @@ class CalendarController: NSObject {
         onTick(timer: timer!)
     }
     
-    private func calculateDayZero() {
-        dayZero = Date(timeIntervalSince1970: 86400 * 5)
-        let now = Date()
-        
-        let dayZeroOrdinality = calendar.ordinality(of: .month, in: .era, for: dayZero!)!
-        let nowOrdinality = calendar.ordinality(of: .month, in: .era, for: now)!
-        
-        monthOffset = nowOrdinality - dayZeroOrdinality
-    }
-    
     private func daysInMonth(month: Date) -> Int {
         return (calendar.range(of: .day, in: .month, for: month)?.count)!
     }
@@ -152,11 +140,13 @@ class CalendarController: NSObject {
         // calculate full weeks left after the day number "d" and add that to d, to get the "last first day of the month"
         let totalDaysInMonth = daysInMonth(month: month)
         let lastFirstWeekdayNumber = (totalDaysInMonth - d) / daysInWeek * daysInWeek + d
-        return calendar.date(bySetting: .day, value: lastFirstWeekdayNumber, of: month)!
+        let dayOfMonth = calendar.ordinality(of: .day, in: .month, for: month)!
+
+        return calendar.date(byAdding: .day, value: (lastFirstWeekdayNumber - dayOfMonth), to: month)!
     }
     
     private func updateCurrentlyShownDays() {
-        currentMonth = calendar.date(byAdding: .month, value: monthOffset, to: dayZero!)
+        currentMonth = calendar.date(byAdding: .month, value: Int(monthOffset), to: Date())!
         let lastMonth = calendar.date(byAdding: .month, value: Int(-1), to: currentMonth!)!
         lastFirstWeekdayLastMonth = getLastFirstWeekday(month: lastMonth)
     }
@@ -222,7 +212,7 @@ class CalendarController: NSObject {
     }
     
     func resetMonth() {
-        calculateDayZero()
+        monthOffset = 0
         updateCurrentlyShownDays()
         onCalendarUpdate?()
     }
