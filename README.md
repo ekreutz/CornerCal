@@ -14,7 +14,7 @@ ___
 
 # Development
 
-The app is written in Swift 4.
+The app is written in Swift 5.
 
 Upcoming features:
 
