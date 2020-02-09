@@ -10,10 +10,10 @@ import Cocoa
 
 class CalendarDayItem: NSCollectionViewItem {
     
-    public func setHasRedBackground(hasRedBackground: Bool) {
-        if (hasRedBackground) {
+    public func setHasBackground(hasBackground: Bool) {
+        if (hasBackground) {
             view.layer?.cornerRadius = (view.layer?.frame.width)! / 2
-            view.layer?.backgroundColor = NSColor.red.cgColor
+            view.layer?.backgroundColor = NSColor.controlAccentColor.cgColor
             textField?.textColor = NSColor.white
         } else {
             view.layer?.cornerRadius = 0
@@ -35,8 +35,6 @@ class CalendarDayItem: NSCollectionViewItem {
         }
     }
     
-    
-    
     public func setText(text: String) {
         textField?.stringValue = text
     }
@@ -46,5 +44,4 @@ class CalendarDayItem: NSCollectionViewItem {
         view.wantsLayer = true
         textField?.alignment = NSTextAlignment.center
     }
-    
 }

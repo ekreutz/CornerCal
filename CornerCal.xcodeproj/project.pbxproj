@@ -3,10 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E920C3123EF0A7300770DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E920C3023EF0A7300770DCD /* AppDelegate.swift */; };
+		1E920C3323EF0A7500770DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E920C3223EF0A7500770DCD /* Assets.xcassets */; };
+		1E920C3D23EF0B5C00770DCD /* CornerCalLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E920C2E23EF0A7300770DCD /* CornerCalLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1E920C4023EF0B8400770DCD /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E920C3F23EF0B8400770DCD /* ServiceManagement.framework */; };
+		1E920C4123EF0B9400770DCD /* CornerCalLauncher.app in Resources */ = {isa = PBXBuildFile; fileRef = 1E920C2E23EF0A7300770DCD /* CornerCalLauncher.app */; };
+		1E92D46D23F03EE600B56673 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E92D46C23F03EE600B56673 /* Main.xib */; };
+		1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8AB8423EFE09400290AD7 /* AboutController.swift */; };
 		229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07A41F76EFEA00A22E37 /* AppDelegate.swift */; };
 		229D07A71F76EFEA00A22E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A61F76EFEA00A22E37 /* Assets.xcassets */; };
 		229D07AA1F76EFEA00A22E37 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A81F76EFEA00A22E37 /* MainMenu.xib */; };
@@ -17,7 +24,40 @@
 		22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D879111F8AD27A00D1956C /* CalendarController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1E920C4223EF0B9400770DCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 229D07991F76EFEA00A22E37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E920C2D23EF0A7300770DCD;
+			remoteInfo = CornerCalLauncher;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1E920C3C23EF0B4400770DCD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				1E920C3D23EF0B5C00770DCD /* CornerCalLauncher.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1E54C8F223EED3200031140E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		1E54C8F423EED7CB0031140E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		1E920C2E23EF0A7300770DCD /* CornerCalLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerCalLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E920C3023EF0A7300770DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1E920C3223EF0A7500770DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1E920C3723EF0A7500770DCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E920C3823EF0A7500770DCD /* CornerCalLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CornerCalLauncher.entitlements; sourceTree = "<group>"; };
+		1E920C3F23EF0B8400770DCD /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		1E92D46C23F03EE600B56673 /* Main.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Main.xib; sourceTree = "<group>"; };
+		1ED8AB8423EFE09400290AD7 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		229D07A11F76EFEA00A22E37 /* CornerCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornerCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		229D07A41F76EFEA00A22E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		229D07A61F76EFEA00A22E37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,21 +72,51 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		229D079E1F76EFEA00A22E37 /* Frameworks */ = {
+		1E920C2B23EF0A7300770DCD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		229D079E1F76EFEA00A22E37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E920C4023EF0B8400770DCD /* ServiceManagement.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E920C2F23EF0A7300770DCD /* CornerCalLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				1E920C3023EF0A7300770DCD /* AppDelegate.swift */,
+				1E920C3223EF0A7500770DCD /* Assets.xcassets */,
+				1E920C3723EF0A7500770DCD /* Info.plist */,
+				1E920C3823EF0A7500770DCD /* CornerCalLauncher.entitlements */,
+				1E92D46C23F03EE600B56673 /* Main.xib */,
+			);
+			path = CornerCalLauncher;
+			sourceTree = "<group>";
+		};
+		1E920C3E23EF0B8400770DCD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E920C3F23EF0B8400770DCD /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		229D07981F76EFEA00A22E37 = {
 			isa = PBXGroup;
 			children = (
 				229D07A31F76EFEA00A22E37 /* CornerCal */,
+				1E920C2F23EF0A7300770DCD /* CornerCalLauncher */,
 				229D07A21F76EFEA00A22E37 /* Products */,
+				1E920C3E23EF0B8400770DCD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				229D07A11F76EFEA00A22E37 /* CornerCal.app */,
+				1E920C2E23EF0A7300770DCD /* CornerCalLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +140,7 @@
 				229D07B21F76FB0200A22E37 /* MainMenuController.swift */,
 				22D879111F8AD27A00D1956C /* CalendarController.swift */,
 				22B3E0951F9BEF4400DA4018 /* SettingsController.swift */,
+				1ED8AB8423EFE09400290AD7 /* AboutController.swift */,
 				229D07C11F78709A00A22E37 /* CalendarDayItem.swift */,
 				229D07C21F78709A00A22E37 /* CalendarDayItem.xib */,
 			);
@@ -78,6 +150,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1E920C2D23EF0A7300770DCD /* CornerCalLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E920C3B23EF0A7500770DCD /* Build configuration list for PBXNativeTarget "CornerCalLauncher" */;
+			buildPhases = (
+				1E920C2A23EF0A7300770DCD /* Sources */,
+				1E920C2B23EF0A7300770DCD /* Frameworks */,
+				1E920C2C23EF0A7300770DCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CornerCalLauncher;
+			productName = CornerCalLauncher;
+			productReference = 1E920C2E23EF0A7300770DCD /* CornerCalLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
 		229D07A01F76EFEA00A22E37 /* CornerCal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 229D07AF1F76EFEA00A22E37 /* Build configuration list for PBXNativeTarget "CornerCal" */;
@@ -85,10 +174,12 @@
 				229D079D1F76EFEA00A22E37 /* Sources */,
 				229D079E1F76EFEA00A22E37 /* Frameworks */,
 				229D079F1F76EFEA00A22E37 /* Resources */,
+				1E920C3C23EF0B4400770DCD /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1E920C4323EF0B9400770DCD /* PBXTargetDependency */,
 			);
 			name = CornerCal;
 			productName = CornerCal;
@@ -101,23 +192,28 @@
 		229D07991F76EFEA00A22E37 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Emil Kreutzman";
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Alex Boldakov";
 				TargetAttributes = {
+					1E920C2D23EF0A7300770DCD = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					229D07A01F76EFEA00A22E37 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 229D079C1F76EFEA00A22E37 /* Build configuration list for PBXProject "CornerCal" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 229D07981F76EFEA00A22E37;
 			productRefGroup = 229D07A21F76EFEA00A22E37 /* Products */;
@@ -125,11 +221,21 @@
 			projectRoot = "";
 			targets = (
 				229D07A01F76EFEA00A22E37 /* CornerCal */,
+				1E920C2D23EF0A7300770DCD /* CornerCalLauncher */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1E920C2C23EF0A7300770DCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E92D46D23F03EE600B56673 /* Main.xib in Resources */,
+				1E920C3323EF0A7500770DCD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		229D079F1F76EFEA00A22E37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,12 +243,21 @@
 				229D07A71F76EFEA00A22E37 /* Assets.xcassets in Resources */,
 				229D07C41F78709A00A22E37 /* CalendarDayItem.xib in Resources */,
 				229D07AA1F76EFEA00A22E37 /* MainMenu.xib in Resources */,
+				1E920C4123EF0B9400770DCD /* CornerCalLauncher.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1E920C2A23EF0A7300770DCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E920C3123EF0A7300770DCD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		229D079D1F76EFEA00A22E37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,16 +267,27 @@
 				22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */,
 				229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */,
 				229D07C31F78709A00A22E37 /* CalendarDayItem.swift in Sources */,
+				1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1E920C4323EF0B9400770DCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1E920C2D23EF0A7300770DCD /* CornerCalLauncher */;
+			targetProxy = 1E920C4223EF0B9400770DCD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		229D07A81F76EFEA00A22E37 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				229D07A91F76EFEA00A22E37 /* Base */,
+				1E54C8F223EED3200031140E /* ru */,
+				1E54C8F423EED7CB0031140E /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -169,10 +295,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1E920C3923EF0A7500770DCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = CornerCalLauncher/CornerCalLauncher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PVYN9G2L5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = CornerCalLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alexvr.CornerCalLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1E920C3A23EF0A7500770DCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = CornerCalLauncher/CornerCalLauncher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PVYN9G2L5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = CornerCalLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alexvr.CornerCalLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		229D07AD1F76EFEA00A22E37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -183,6 +357,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -190,6 +365,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -217,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -230,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -240,6 +417,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -247,6 +425,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -268,10 +447,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -280,14 +460,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CornerCal/CornerCal.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PVYN9G2L5;
 				INFOPLIST_FILE = CornerCal/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ekreutz.CornerCal;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alexvr.CornerCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -296,20 +482,34 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CornerCal/CornerCal.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CornerCal/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ekreutz.CornerCal;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alexvr.CornerCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E920C3B23EF0A7500770DCD /* Build configuration list for PBXNativeTarget "CornerCalLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E920C3923EF0A7500770DCD /* Debug */,
+				1E920C3A23EF0A7500770DCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		229D079C1F76EFEA00A22E37 /* Build configuration list for PBXProject "CornerCal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

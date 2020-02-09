@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -22,6 +23,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trySetDefaultValueFor(key: keys.SHOW_DAY_OF_WEEK_KEY, value: true)
         trySetDefaultValueFor(key: keys.USE_HOURS_24_KEY, value: true)
         trySetDefaultValueFor(key: keys.SHOW_AM_PM_KEY, value: true)
+        
+        let launcherAppId = "ru.alexvr.CornerCalLauncher"
+        let runningApps = NSWorkspace.shared.runningApplications
+        let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
+
+        SMLoginItemSetEnabled(launcherAppId as CFString, true)
+
+        if isRunning {
+            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
+        }
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -48,6 +59,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UserDefaults.standard.set(value, forKey: key)
         }
     }
+}
 
+extension Notification.Name {
+    static let killLauncher = Notification.Name("killLauncher")
 }
 

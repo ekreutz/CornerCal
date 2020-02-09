@@ -83,6 +83,4 @@ class SettingsController: NSObject, NSWindowDelegate {
             calendarController.setDateFormat()
         }
     }
-    
-
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <deployment version="101400" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,8 +31,11 @@
                 <outlet property="use24HoursBox" destination="E8n-nc-rfB" id="O1q-22-QEZ"/>
             </connections>
         </customObject>
+        <customObject id="g3l-Kl-VCn" customClass="AboutController" customModule="CornerCal" customModuleProvider="target"/>
         <customObject id="3bX-Tg-Ykk" customClass="MainMenuController" customModule="CornerCal" customModuleProvider="target">
             <connections>
+                <outlet property="aboutWindow" destination="GM6-pk-LsQ" id="cNq-TZ-a8c"/>
+                <outlet property="appMenu" destination="1v0-15-XWH" id="bB2-Gy-Gs9"/>
                 <outlet property="buttonLeft" destination="Q5d-GP-dLa" id="Kpc-3N-yGK"/>
                 <outlet property="buttonRight" destination="8Sx-tC-GbY" id="RIK-6A-xmc"/>
                 <outlet property="collectionView" destination="maz-ht-22y" id="stj-LN-h6m"/>
@@ -49,28 +53,47 @@
                         <outlet property="view" destination="IaI-2C-Pq8" id="1ja-Id-oug"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="gAV-uw-5MX"/>
-                <menuItem title="Settings" id="GmB-eQ-Uw8">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+            </items>
+            <point key="canvasLocation" x="-183" y="-115"/>
+        </menu>
+        <menu id="1v0-15-XWH">
+            <items>
+                <menuItem title="Premium(soon)" keyEquivalent="p" id="9E8-Hb-g0V"/>
+                <menuItem title="Open calendar app" keyEquivalent="c" id="q73-Mh-ATb">
                     <connections>
-                        <action selector="openSettingsClicked:" target="3bX-Tg-Ykk" id="PDc-6Q-w7L"/>
+                        <action selector="openCalendarClick:" target="3bX-Tg-Ykk" id="foe-2Q-0Ci"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Settings" keyEquivalent="s" id="0GA-Pk-dni">
+                    <connections>
+                        <action selector="openSettingsClicked:" target="3bX-Tg-Ykk" id="PHR-OD-z2x"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="About" keyEquivalent="a" id="5Ab-Tp-fCl">
+                    <connections>
+                        <action selector="aboutClicked:" target="3bX-Tg-Ykk" id="fwO-Lg-056"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" keyEquivalent="q" id="nwf-du-ktX">
+                    <connections>
+                        <action selector="quitClicked:" target="3bX-Tg-Ykk" id="C7n-u8-Xcg"/>
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-109.5" y="-89.5"/>
+            <point key="canvasLocation" x="92" y="-75"/>
         </menu>
-        <customView id="IaI-2C-Pq8">
-            <rect key="frame" x="0.0" y="0.0" width="276" height="240"/>
+        <customView canDrawConcurrently="YES" id="IaI-2C-Pq8">
+            <rect key="frame" x="0.0" y="0.0" width="286" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="0.0" verticalPageScroll="0.0" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="LBc-DF-c7o">
-                    <rect key="frame" x="10" y="0.0" width="256" height="200"/>
+                    <rect key="frame" x="10" y="0.0" width="266" height="205"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="n43-Ml-piN">
-                        <rect key="frame" x="0.0" y="0.0" width="256" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="266" height="205"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView autoresizesSubviews="NO" id="maz-ht-22y">
-                                <rect key="frame" x="0.0" y="0.0" width="256" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="266" height="205"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="8" id="Rt7-Fz-vIc">
                                     <size key="itemSize" width="28" height="28"/>
@@ -85,57 +108,60 @@
                         <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                     </clipView>
                     <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="Vt0-3b-5Kk">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="Vt0-3b-5Kk">
                         <rect key="frame" x="-100" y="-100" width="224" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="p1v-Sx-CEK">
-                        <rect key="frame" x="240" y="0.0" width="16" height="200"/>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="p1v-Sx-CEK">
+                        <rect key="frame" x="250" y="0.0" width="16" height="205"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q5d-GP-dLa">
-                    <rect key="frame" x="0.0" y="208" width="60" height="20"/>
+                    <rect key="frame" x="0.0" y="218" width="60" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="0Tb-la-vqc"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="BFl-IJ-uMo"/>
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="◀" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="JkT-H5-zCl">
                         <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="label" size="12"/>
                         <string key="keyEquivalent"></string>
                     </buttonCell>
+                    <color key="contentTintColor" name="MonthColor"/>
                     <connections>
                         <action selector="leftClicked:" target="3bX-Tg-Ykk" id="TcB-k5-ERU"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Sx-tC-GbY">
-                    <rect key="frame" x="216" y="208" width="60" height="20"/>
+                    <rect key="frame" x="226" y="218" width="60" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="3Xh-pg-AZ8"/>
                         <constraint firstAttribute="height" constant="20" id="yHA-u9-uZu"/>
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="▶" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="gys-YA-Nr4">
                         <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="label" size="12"/>
                         <string key="keyEquivalent"></string>
                     </buttonCell>
+                    <color key="contentTintColor" name="MonthColor"/>
                     <connections>
                         <action selector="rightClicked:" target="3bX-Tg-Ykk" id="xZe-XW-Ldw"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j2b-bI-i9v">
-                    <rect key="frame" x="63" y="203" width="150" height="30"/>
+                    <rect key="frame" x="74" y="213" width="139" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="fJZ-dg-HdR"/>
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="September 2015" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="5Js-yS-1ZZ">
                         <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="system" size="20"/>
+                        <font key="font" metaFont="system" size="18"/>
                         <string key="keyEquivalent" base64-UTF8="YES">
 IA
 </string>
                     </buttonCell>
+                    <color key="contentTintColor" name="MonthColor"/>
                     <connections>
                         <action selector="clearMonthHopping:" target="3bX-Tg-Ykk" id="x9i-lT-shF"/>
                     </connections>
@@ -152,18 +178,18 @@ IA
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Q5d-GP-dLa" secondAttribute="trailing" constant="20" symbolic="YES" id="jR3-hf-I3P"/>
                 <constraint firstAttribute="bottom" secondItem="LBc-DF-c7o" secondAttribute="bottom" id="nQC-Vv-jxW"/>
                 <constraint firstItem="j2b-bI-i9v" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IaI-2C-Pq8" secondAttribute="leading" id="nhd-Sm-UW2"/>
-                <constraint firstItem="LBc-DF-c7o" firstAttribute="top" secondItem="j2b-bI-i9v" secondAttribute="bottom" constant="3" id="olh-fk-zam"/>
+                <constraint firstItem="LBc-DF-c7o" firstAttribute="top" secondItem="j2b-bI-i9v" secondAttribute="bottom" constant="8" id="olh-fk-zam"/>
                 <constraint firstAttribute="trailing" secondItem="8Sx-tC-GbY" secondAttribute="trailing" id="r1K-iE-QtK"/>
-                <constraint firstItem="LBc-DF-c7o" firstAttribute="top" secondItem="IaI-2C-Pq8" secondAttribute="top" constant="40" id="sbp-a5-6NZ"/>
+                <constraint firstItem="LBc-DF-c7o" firstAttribute="top" secondItem="IaI-2C-Pq8" secondAttribute="top" constant="45" id="sbp-a5-6NZ"/>
                 <constraint firstItem="Q5d-GP-dLa" firstAttribute="top" secondItem="IaI-2C-Pq8" secondAttribute="top" constant="12" id="tsZ-rC-hk6"/>
             </constraints>
-            <point key="canvasLocation" x="-110" y="131"/>
+            <point key="canvasLocation" x="-184" y="130"/>
         </customView>
-        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2fn-5w-bKg">
+        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2fn-5w-bKg">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <rect key="contentRect" x="564" y="309" width="410" height="250"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <value key="minSize" type="size" width="410" height="250"/>
             <value key="maxSize" type="size" width="410" height="250"/>
             <view key="contentView" id="z56-gW-g35">
@@ -171,7 +197,7 @@ IA
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="DsG-Kg-fxR">
-                        <rect key="frame" x="139" y="194" width="220" height="30"/>
+                        <rect key="frame" x="175" y="194" width="197" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Show the time with seconds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YBS-XV-zIF">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -182,7 +208,7 @@ IA
                         </connections>
                     </button>
                     <button fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="E8n-nc-rfB">
-                        <rect key="frame" x="139" y="162" width="220" height="30"/>
+                        <rect key="frame" x="175" y="162" width="184" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="X0B-xC-XWg">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -193,7 +219,7 @@ IA
                         </connections>
                     </button>
                     <button fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-Vp-99m">
-                        <rect key="frame" x="139" y="130" width="220" height="30"/>
+                        <rect key="frame" x="175" y="130" width="184" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Show AM/PM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wHM-Vz-n6I">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -204,9 +230,9 @@ IA
                         </connections>
                     </button>
                     <button fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qib-nV-OYJ">
-                        <rect key="frame" x="139" y="66" width="220" height="30"/>
+                        <rect key="frame" x="175" y="66" width="184" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show date" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BDg-ZQ-zFx">
+                        <buttonCell key="cell" type="check" title="Show date" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="BDg-ZQ-zFx">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -215,25 +241,16 @@ IA
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-RT-lm9">
-                        <rect key="frame" x="31" y="196" width="93" height="22"/>
+                        <rect key="frame" x="18" y="198" width="140" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Time options" usesSingleLineMode="YES" id="V7g-VS-7tR">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-hJ-eoO">
-                        <rect key="frame" x="31" y="68" width="93" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Date options" usesSingleLineMode="YES" id="fRr-jF-hAT">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Time options" id="V7g-VS-7tR">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-iQ-hki">
-                        <rect key="frame" x="139" y="34" width="220" height="30"/>
+                        <rect key="frame" x="175" y="34" width="184" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Show the day of the week" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJf-Zh-g4M">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -243,12 +260,114 @@ IA
                             <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="9o9-nG-vbd"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-hJ-eoO">
+                        <rect key="frame" x="18" y="68" width="140" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Date options" usesSingleLineMode="YES" id="fRr-jF-hAT">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="MUN-z6-qDm" id="pyF-2S-Dp6"/>
             </connections>
-            <point key="canvasLocation" x="-150" y="467"/>
+            <point key="canvasLocation" x="-163" y="467"/>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="GM6-pk-LsQ">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="410" height="250"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <view key="contentView" id="4MD-6L-w2w">
+                <rect key="frame" x="0.0" y="0.0" width="410" height="250"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hdy-Xb-dj3">
+                        <rect key="frame" x="115" y="188" width="180" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Alexey Boldakov" id="qAV-CL-IP5">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OmK-Hy-37L">
+                        <rect key="frame" x="157" y="68" width="96" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Project Page" id="saC-ne-fH1">
+                            <font key="font" size="14" name="HelveticaNeue-Bold"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMt-3l-kYm">
+                        <rect key="frame" x="157" y="126" width="96" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Donate" id="VYc-GA-Scr">
+                            <font key="font" size="14" name="HelveticaNeue-Bold"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ioS-0l-1PY">
+                        <rect key="frame" x="157" y="205" width="96" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Author" id="nKm-ar-7JZ">
+                            <font key="font" size="14" name="HelveticaNeue-Bold"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BoM-o4-KIE">
+                        <rect key="frame" x="99" y="98" width="213" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="https://paypal.me/boldakov" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="YPH-CO-f95">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <color key="contentTintColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <action selector="donateClicked:" target="g3l-Kl-VCn" id="2SK-43-vOY"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mz7-QV-AUd">
+                        <rect key="frame" x="55" y="38" width="300" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="https://github.com/AlexeyBoldakov/CornerCal" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="WGy-Dq-PXm">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <color key="contentTintColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <action selector="projectClicked:" target="g3l-Kl-VCn" id="5Ns-Cy-4kR"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-x0-MBU">
+                        <rect key="frame" x="99" y="159" width="213" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="hello@fabula-it.com" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="Azy-p9-XT4">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <color key="contentTintColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <action selector="emailClicked:" target="g3l-Kl-VCn" id="pEc-Im-OnY"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="g3l-Kl-VCn" id="jJ8-Le-wLM"/>
+            </connections>
+            <point key="canvasLocation" x="334" y="467"/>
         </window>
     </objects>
+    <resources>
+        <namedColor name="MonthColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

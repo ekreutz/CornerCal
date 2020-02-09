@@ -17,7 +17,7 @@ struct Day {
 
 class CalendarController: NSObject {
     
-    let calendar = Calendar.autoupdatingCurrent
+    var calendar = Calendar.current
     let formatter = DateFormatter()
     let monthFormatter = DateFormatter()
     var locale: Locale!
@@ -44,8 +44,9 @@ class CalendarController: NSObject {
         locale = Locale.init(identifier: languageIdentifier)
         
         monthFormatter.locale = locale
-        monthFormatter.dateFormat = "MMMM yyyy"
+        monthFormatter.dateFormat = "LLLL yyyy"
         
+        calendar.locale = locale
         weekdays = calendar.veryShortWeekdaySymbols
         daysInWeek = weekdays.count
         
@@ -60,6 +61,7 @@ class CalendarController: NSObject {
         let keys = SettingsKeys()
         
         let showSeconds = defaults.bool(forKey: keys.SHOW_SECONDS_KEY)
+        
         let use24Hours = defaults.bool(forKey: keys.USE_HOURS_24_KEY)
         let showAMPM = defaults.bool(forKey: keys.SHOW_AM_PM_KEY)
         let showDate = defaults.bool(forKey: keys.SHOW_DATE_KEY)
@@ -73,7 +75,7 @@ class CalendarController: NSObject {
         dateTemplate += (showDate) ? "dMMM" : ""
         
         formatter.setLocalizedDateFormatFromTemplate(dateTemplate)
-        let dateFormat = (showAnyDateInfo) ? formatter.dateFormat!.replacingOccurrences(of: ",", with: "") + "  " : ""
+        let dateFormat = (showAnyDateInfo) ? formatter.dateFormat! + " " : ""
         
         var timeTemplate = "mm"
         timeTemplate += (showSeconds) ? "ss" : ""
@@ -82,11 +84,13 @@ class CalendarController: NSObject {
         formatter.setLocalizedDateFormatFromTemplate(timeTemplate)
         var timeFormat = formatter.dateFormat!
         
+        
         if (use24Hours || !showAMPM) {
             timeFormat = timeFormat.replacingOccurrences(of: "a", with: "")
         }
         
         formatter.dateFormat = String(format: "%@%@", dateFormat, timeFormat)
+        
         initTiming(useSeconds: showSeconds)
     }
     
@@ -119,7 +123,7 @@ class CalendarController: NSObject {
         
         let fireAt = calendar.date(byAdding: .second, value: fireAfter, to: now)!
         timer = Timer(fire: fireAt, interval: tickInterval, repeats: true, block: onTick)
-        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+        RunLoop.main.add(timer!, forMode: RunLoop.Mode.common)
         
         // tick once to update straight away
         lastTick = calendar.date(byAdding: .second, value: Int(-tickInterval), to: now)
@@ -174,7 +178,7 @@ class CalendarController: NSObject {
         var day = Day()
         
         if (index < daysInWeek) {
-            day.text = weekdays[(calendar.firstWeekday + index - 1) % daysInWeek]
+            day.text = weekdays[(calendar.firstWeekday + index - 1) % daysInWeek].capitalizingFirstLetter()
         } else {
             let dayOffset = index - daysInWeek
             let date = calendar.date(byAdding: .day, value: dayOffset, to: lastFirstWeekdayLastMonth!)!
@@ -189,14 +193,17 @@ class CalendarController: NSObject {
     }
     
     func getFormattedDate() -> String {
-        // notice the added spaces around the date itself
-        // they're used as a hack to stop the date from wobbling around in the menu item
-        // basically, we're forcing an overflow here
-        return formatter.string(from: tick!)
+        var formatted = formatter.string(from: tick!).capitalizingFirstLetter()
+        
+        if formatted.contains("pm") || formatted.contains("am") {
+            formatted = formatted.uppercaseLast(count: 2)
+        }
+        
+        return formatted
     }
     
     func getMonth() -> String {
-        return monthFormatter.string(from: currentMonth!)
+        return monthFormatter.string(from: currentMonth!).capitalizingFirstLetter()
     }
     
     func incrementMonth() {
@@ -215,5 +222,25 @@ class CalendarController: NSObject {
         monthOffset = 0
         updateCurrentlyShownDays()
         onCalendarUpdate?()
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+    
+    func uppercaseLast(count: Int) -> String {
+        let index = self.index(self.endIndex, offsetBy: -2)
+        let uppercasedString = String(self[index...]).uppercased()
+        return self.dropLast(2) + uppercasedString
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+    
+    mutating func uppercaseLast(count: Int) {
+        self = self.uppercaseLast(count: count)
     }
 }

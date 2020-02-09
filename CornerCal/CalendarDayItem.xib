@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,6 +30,7 @@
                 <constraint firstItem="VYy-zd-W7P" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="7AI-Eo-Y9k"/>
                 <constraint firstItem="VYy-zd-W7P" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="SPD-lO-yXi"/>
             </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
         </customView>
         <collectionViewItem id="qNE-OW-YOz" customClass="CalendarDayItem" customModule="CornerCal" customModuleProvider="target">
             <connections>

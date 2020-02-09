@@ -27,7 +27,7 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         calendarItem.setBold(bold: !day.isNumber)
         calendarItem.setText(text: day.text)
         calendarItem.setPartlyTransparent(partlyTransparent: !day.isCurrentMonth)
-        calendarItem.setHasRedBackground(hasRedBackground: day.isToday)
+        calendarItem.setHasBackground(hasBackground: day.isToday)
         
         return calendarItem
     }
@@ -35,6 +35,8 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     @IBOutlet weak var controller: CalendarController!
     
     @IBOutlet weak var statusMenu: NSMenu!
+    
+    @IBOutlet weak var appMenu: NSMenu!
     
     @IBOutlet weak var monthLabel: NSButton!
     
@@ -46,68 +48,95 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     
     @IBOutlet weak var settingsWindow: NSWindow!
     
+    @IBOutlet weak var aboutWindow: NSWindow!
+    
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     private func updateMenuTime() {
-        statusItem.title = controller.getFormattedDate()
+        statusItem.button?.title = controller.getFormattedDate()
     }
     
     private func updateCalendar() {
         monthLabel.title = controller.getMonth()
+        
         applyUIModifications()
+        updateMonthLabelState()
         collectionView.reloadData()
     }
     
-    private func getBasicAttributes(button: NSButton, color: NSColor, alpha: CGFloat) -> [NSAttributedStringKey : Any] {
+    private func getBasicAttributes(button: NSButton, color: NSColor, alpha: CGFloat) -> [NSAttributedString.Key : Any] {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         
         return [
-            NSAttributedStringKey.foregroundColor: color.withAlphaComponent(alpha),
-            NSAttributedStringKey.font: NSFont.systemFont(ofSize: (button.font?.pointSize)!, weight: NSFont.Weight.light),
-            NSAttributedStringKey.backgroundColor: NSColor.clear,
-            NSAttributedStringKey.paragraphStyle: style,
-            NSAttributedStringKey.kern: 0.5 // some additional character spacing
+            NSAttributedString.Key.foregroundColor: color.withAlphaComponent(alpha),
+            NSAttributedString.Key.backgroundColor: NSColor.clear,
+            NSAttributedString.Key.paragraphStyle: style,
         ]
     }
     
     private func applyButtonHighlightSettings(button: NSButton) {
-        let color = NSColor.textColor
-        let defaultAlpha: CGFloat = 0.75
-        let pressedAlpha: CGFloat = 0.45
-        
-        let defaultAttributes = getBasicAttributes(button: button, color: color, alpha: defaultAlpha)
-        let pressedAttributes = getBasicAttributes(button: button, color: color, alpha: pressedAlpha)
-        
-        button.attributedTitle = NSAttributedString(string: button.title, attributes: defaultAttributes)
+        let pressedColor = NSColor.gray
+        let pressedAlpha: CGFloat = 1
+        let pressedAttributes = getBasicAttributes(button: button, color: pressedColor, alpha: pressedAlpha)
         button.attributedAlternateTitle = NSAttributedString(string: button.title, attributes: pressedAttributes)
         button.alignment = .center
     }
     
     private func applyUIModifications() {
         statusItem.button?.font = NSFont.monospacedDigitSystemFont(ofSize: (statusItem.button?.font?.pointSize)!, weight: .regular)
-        
+    }
+    
+    private func updateMonthLabelState() {
         applyButtonHighlightSettings(button: monthLabel)
         applyButtonHighlightSettings(button: buttonLeft)
         applyButtonHighlightSettings(button: buttonRight)
     }
     
     func refreshState() {
-        statusItem.menu = statusMenu
+        
+        if let button = statusItem.button {
+            button.target = self
+            button.action = #selector(statusBarButtonClicked(sender:))
+            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        }
         controller.subscribe(onTimeUpdate: updateMenuTime, onCalendarUpdate: updateCalendar)
-
+    }
+    
+    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
+        let event = NSApp.currentEvent!
+        let point = NSPoint(x: sender.frame.origin.x, y: sender.frame.origin.y - (sender.frame.height / 4))
+        
+        
+        if event.type == NSEvent.EventType.leftMouseUp {
+            statusMenu.popUp(positioning: nil, at: point, in: sender.superview)
+        } else {
+            appMenu.popUp(positioning: nil, at: point, in: sender.superview)
+        }
     }
     
     func deactivate() {
         controller.pause()
     }
     
+    @IBAction func openCalendarClick(_ sender: NSMenuItem) {
+        NSWorkspace.shared.launchApplication(String("Calendar"))
+    }
+    
     @IBAction func openSettingsClicked(_ sender: NSMenuItem) {
         let settingsWindowController = NSWindowController.init(window: settingsWindow)
         settingsWindowController.showWindow(sender)
-        
-        // bring settings window to front
         NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    @IBAction func aboutClicked(_ sender: NSMenuItem) {
+        let aboutWindowController = NSWindowController.init(window: aboutWindow)
+        aboutWindowController.showWindow(sender)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    @IBAction func quitClicked(_ sender: NSMenuItem) {
+        NSApp.terminate(self)
     }
     
     @IBAction func leftClicked(_ sender: NSButton) {
@@ -121,5 +150,4 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     @IBAction func clearMonthHopping(_ sender: Any) {
         controller.resetMonth()
     }
-
 }

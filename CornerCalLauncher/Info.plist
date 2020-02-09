@@ -15,22 +15,26 @@
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
-	<string>APPL</string>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>$(MARKETING_VERSION)</string>
+	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>1</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
+	<key>LSBackgroundOnly</key>
+	<true/>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
-	<key>LSUIElement</key>
-	<string>1</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2017 Emil Kreutzman. All rights reserved.</string>
+	<string>Copyright © 2020 Alex Boldakov. All rights reserved.</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
+	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSSupportsAutomaticTermination</key>
+	<true/>
+	<key>NSSupportsSuddenTermination</key>
+	<true/>
 </dict>
 </plist>
