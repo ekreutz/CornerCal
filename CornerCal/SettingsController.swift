@@ -3,7 +3,7 @@
 //  CornerCal
 //
 //  Created by Emil Kreutzman on 21/10/2017.
-//  Copyright © 2017 Emil Kreutzman. All rights reserved.
+//  Copyright © 2020 Alex Boldakov. All rights reserved.
 //
 
 import Cocoa
