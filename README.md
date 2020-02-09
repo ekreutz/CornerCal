@@ -1,6 +1,6 @@
 # CornerCal - a better clock app for macOS
 
-Download latest version: [CornerCal.dmg.zip](https://github.com/AlexeyBoldakov/CornerCal/blob/master/builds/CornerCal.dmg.zip) (supports macOS Sierra 10.14 and higher)
+Download latest version: [CornerCal.dmg.zip](https://github.com/AlexeyBoldakov/CornerCal/raw/master/builds/CornerCal.dmg.zip) (supports macOS Sierra 10.14 and higher)
 
 
 
