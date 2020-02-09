@@ -1,5 +1,7 @@
 # CornerCal - a better clock app for macOS
 
+This project is a fork of the [ekreutz/CornerCal](https://github.com/ekreutz/CornerCal)  with some changes. 
+
 Download latest version: [CornerCal.dmg.zip](https://github.com/AlexeyBoldakov/CornerCal/raw/master/builds/CornerCal.dmg.zip) (supports macOS Sierra 10.14 and higher)
 
 
