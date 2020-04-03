@@ -1,4 +1,4 @@
-# CornerCal - a better clock app for macOS
+# StatusCal - a better clock app for macOS
 
 This project is a fork of the [ekreutz/CornerCal](https://github.com/ekreutz/CornerCal)  with some changes. 
 
