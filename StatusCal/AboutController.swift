@@ -22,6 +22,7 @@ class AboutController: NSObject, NSWindowDelegate {
     
     override init() {
         super.init()
+        //self.versionLabel.stringValue = version()
     }
     
     private func openUrl(link: String) {
@@ -35,6 +36,6 @@ class AboutController: NSObject, NSWindowDelegate {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
-        return "\(version) (\(build))"
+        return "\(version)(\(build))"
     }
 }
