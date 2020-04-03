@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MainMenuController: NSObject, NSCollectionViewDataSource {
+class MainMenuController: NSObject, NSCollectionViewDataSource, NSCollectionViewDelegate {
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return controller.itemCount()
@@ -30,6 +30,20 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         calendarItem.setHasBackground(hasBackground: day.isToday)
         
         return calendarItem
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+//        if let indexPath = indexPaths.first {
+//            let day = controller.getItemAt(index: indexPath.item)
+//            
+//            let interval = day.date.timeIntervalSinceReferenceDate
+//
+//            let url = URL(string: "ical://\(interval)")!
+//            if NSWorkspace.shared.open(url) {
+//                print("default browser was successfully opened")
+//
+//            }
+//        }
     }
     
     @IBOutlet weak var controller: CalendarController!
@@ -119,20 +133,27 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         controller.pause()
     }
     
-    @IBAction func openCalendarClick(_ sender: NSMenuItem) {
-        NSWorkspace.shared.launchApplication(String("Calendar"))
-    }
-    
     @IBAction func openSettingsClicked(_ sender: NSMenuItem) {
         let settingsWindowController = NSWindowController.init(window: settingsWindow)
         settingsWindowController.showWindow(sender)
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    @IBAction func openCalendarClick(_ sender: NSMenuItem) {
+        NSWorkspace.shared.launchApplication(String("Calendar"))
+    }
+    
     @IBAction func aboutClicked(_ sender: NSMenuItem) {
         let aboutWindowController = NSWindowController.init(window: aboutWindow)
         aboutWindowController.showWindow(sender)
         NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    @IBAction func donateClick(_ sender: NSMenuItem) {
+        let url = URL(string: "https://paypal.me/boldakov")!
+        if NSWorkspace.shared.open(url) {
+            print("default browser was successfully opened")
+        }
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {

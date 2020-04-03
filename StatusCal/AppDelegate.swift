@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trySetDefaultValueFor(key: keys.USE_HOURS_24_KEY, value: true)
         trySetDefaultValueFor(key: keys.SHOW_AM_PM_KEY, value: true)
         
-        let launcherAppId = "ru.alexvr.CornerCalLauncher"
+        let launcherAppId = "ru.alexvr.StatusCalLauncher"
         let runningApps = NSWorkspace.shared.runningApplications
         let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
 

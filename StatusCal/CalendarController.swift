@@ -13,6 +13,8 @@ struct Day {
     var isToday = false
     var isCurrentMonth = false
     var text = "0"
+    var date = Date()
+    var formattedDate = ""
 }
 
 class CalendarController: NSObject {
@@ -84,13 +86,11 @@ class CalendarController: NSObject {
         formatter.setLocalizedDateFormatFromTemplate(timeTemplate)
         var timeFormat = formatter.dateFormat!
         
-        
         if (use24Hours || !showAMPM) {
             timeFormat = timeFormat.replacingOccurrences(of: "a", with: "")
         }
         
         formatter.dateFormat = String(format: "%@%@", dateFormat, timeFormat)
-        
         initTiming(useSeconds: showSeconds)
     }
     
@@ -176,13 +176,20 @@ class CalendarController: NSObject {
     
     func getItemAt(index: Int) -> Day {
         var day = Day()
+        let dayOffset = index - daysInWeek
+        let date = calendar.date(byAdding: .day, value: dayOffset, to: lastFirstWeekdayLastMonth!)!
         
         if (index < daysInWeek) {
             day.text = weekdays[(calendar.firstWeekday + index - 1) % daysInWeek].capitalizingFirstLetter()
-        } else {
-            let dayOffset = index - daysInWeek
-            let date = calendar.date(byAdding: .day, value: dayOffset, to: lastFirstWeekdayLastMonth!)!
+            day.date = date
+            day.formattedDate = formatter.string(from: date)
             
+        } else {
+            
+            
+            
+            day.date = date
+            day.formattedDate = formatter.string(from: date)
             day.isNumber = true
             day.text = String(calendar.ordinality(of: .day, in: .month, for: date)!)
             day.isCurrentMonth = calendar.isDate(date, equalTo: currentMonth!, toGranularity: .month)

@@ -1,53 +1,59 @@
 /* Class = "NSWindow"; title = "Settings"; ObjectID = "2fn-5w-bKg"; */
-"2fn-5w-bKg.title" = "Settings";
+"2fn-5w-bKg.title" = "Настройки";
 
 /* Class = "NSWindow"; title = "About"; ObjectID = "jdE-c0-rAD"; */
-"jdE-c0-rAD.title" = "About";
+"jdE-c0-rAD.title" = "О приложении";
 
 /* Class = "NSButtonCell"; title = "September 2015"; ObjectID = "5Js-yS-1ZZ"; */
-"5Js-yS-1ZZ.title" = "September 2015";
+"5Js-yS-1ZZ.title" = "Сентябрь 2015";
 
 /* Class = "NSButtonCell"; title = "Show date"; ObjectID = "BDg-ZQ-zFx"; */
-"BDg-ZQ-zFx.title" = "Show date";
+"BDg-ZQ-zFx.title" = "Показать дату";
 
 /* Class = "NSButtonCell"; title = "◀"; ObjectID = "JkT-H5-zCl"; */
 "JkT-H5-zCl.title" = "◀";
 
 /* Class = "NSButtonCell"; title = "Show the day of the week"; ObjectID = "SJf-Zh-g4M"; */
-"SJf-Zh-g4M.title" = "Show the day of the week";
+"SJf-Zh-g4M.title" = "Показывать день недели";
 
 /* Class = "NSTextFieldCell"; title = "Time options"; ObjectID = "V7g-VS-7tR"; */
-"V7g-VS-7tR.title" = "Time options";
+"V7g-VS-7tR.title" = "Настройки времени";
 
 /* Class = "NSButtonCell"; title = "Use a 24-hour clock"; ObjectID = "X0B-xC-XWg"; */
-"X0B-xC-XWg.title" = "Use a 24-hour clock";
+"X0B-xC-XWg.title" = "24-часовой формат";
 
 /* Class = "NSButtonCell"; title = "Show the time with seconds"; ObjectID = "YBS-XV-zIF"; */
-"YBS-XV-zIF.title" = "Show the time with seconds";
+"YBS-XV-zIF.title" = "Показать секунды";
 
 /* Class = "NSTextFieldCell"; title = "Date options"; ObjectID = "fRr-jF-hAT"; */
-"fRr-jF-hAT.title" = "Date options";
+"fRr-jF-hAT.title" = "Настройки даты";
 
 /* Class = "NSButtonCell"; title = "▶"; ObjectID = "gys-YA-Nr4"; */
 "gys-YA-Nr4.title" = "▶";
 
 /* Class = "NSButtonCell"; title = "Show AM/PM"; ObjectID = "wHM-Vz-n6I"; */
-"wHM-Vz-n6I.title" = "Show AM/PM";
+"wHM-Vz-n6I.title" = "Показать AM/PM";
 
 /* Class = "NSMenuItem"; title = "[Calendar Collection]"; ObjectID = "VJE-7c-auX"; */
 "VJE-7c-auX.title" = "[Calendar Collection]";
 
-/* Class = "NSMenuItem"; title = "Premium(soon)"; ObjectID = "9E8-Hb-g0V"; */
-"9E8-Hb-g0V.title" = "Premium(soon)";
+/* Class = "NSMenuItem"; title = "Support this project"; ObjectID = "9E8-Hb-g0V"; */
+"9E8-Hb-g0V.title" = "Поддержать проект";
 
 /* Class = "NSMenuItem"; title = "Settings"; ObjectID = "q73-Mh-ATb"; */
-"q73-Mh-ATb.title" = "Open calendar app";
+"q73-Mh-ATb.title" = "Открыть Календарь";
 
 /* Class = "NSMenuItem"; title = "Settings"; ObjectID = "0GA-Pk-dni"; */
-"0GA-Pk-dni.title" = "Settings";
+"0GA-Pk-dni.title" = "Настройки";
 
 /* Class = "NSMenuItem"; title = "About"; ObjectID = "5Ab-Tp-fCl"; */
-"5Ab-Tp-fCl.title" = "About";
+"5Ab-Tp-fCl.title" = "О приложении";
 
 /* Class = "NSMenuItem"; title = "Quit"; ObjectID = "nwf-du-ktX"; */
-"nwf-du-ktX.title" = "Quit";
+"nwf-du-ktX.title" = "Выход";
+
+/* Class = "NSTextField"; title = "Version"; ObjectID = "b6y-2e-ZIm"; */
+"b6y-2e-ZIm.title" = "Версия";
+
+/* Class = "NSTextField"; title = "Copyright © 2020 Alex Boldakov. All rights reserved."; ObjectID = "3yw-kd-nA2"; */
+"3yw-kd-nA2.text" = "Copyright © 2020 Alex Boldakov. Все права защищены.";

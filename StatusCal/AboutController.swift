@@ -10,19 +10,14 @@ import Cocoa
 
 class AboutController: NSObject, NSWindowDelegate {
     
-    @IBAction func emailClicked(_ sender: NSButton) {
-        let service = NSSharingService(named: NSSharingService.Name.composeEmail)
-        service?.recipients = [sender.title]
-        service?.subject = "CornerCal feedback"
-        service?.perform(withItems: [""])
-    }
-    
-    @IBAction func donateClicked(_ sender: NSButton) {
-        openUrl(link: sender.title)
-    }
-    
     @IBAction func projectClicked(_ sender: NSButton) {
         openUrl(link: sender.title)
+    }
+    
+    @IBOutlet weak var versionLabel: NSTextField! {
+        didSet {
+            versionLabel.stringValue = version()
+        }
     }
     
     override init() {
@@ -34,5 +29,12 @@ class AboutController: NSObject, NSWindowDelegate {
         if NSWorkspace.shared.open(url) {
             print("default browser was successfully opened")
         }
+    }
+    
+    func version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let build = dictionary["CFBundleVersion"] as! String
+        return "\(version) (\(build))"
     }
 }
