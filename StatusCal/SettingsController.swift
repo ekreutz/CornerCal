@@ -150,11 +150,9 @@ class SettingsController: NSObject, NSWindowDelegate {
     }
     
     func requestPermissions() {
-        let granted = calendarManager.requescAccess()
-        
-        if granted {
+        calendarManager.requestAccess(completion: { (granted) in
             self.updateCalendarList()
-        }
+        })
     }
 }
 

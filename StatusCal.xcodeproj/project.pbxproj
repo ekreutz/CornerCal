@@ -15,7 +15,6 @@
 		1E92D46D23F03EE600B56673 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E92D46C23F03EE600B56673 /* Main.xib */; };
 		1EB5FCB0244F3C2B00311991 /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5FCAF244F3C2B00311991 /* CheckboxCell.swift */; };
 		1EB5FCB2244F485F00311991 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5FCB1244F485F00311991 /* CalendarManager.swift */; };
-		1EC9068524508E7800C37606 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EC9068424508E7700C37606 /* Info.plist */; };
 		1EC9068824508F7200C37606 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EC9068A24508F7200C37606 /* InfoPlist.strings */; };
 		1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8AB8423EFE09400290AD7 /* AboutController.swift */; };
 		229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07A41F76EFEA00A22E37 /* AppDelegate.swift */; };
@@ -255,7 +254,6 @@
 				1EC9068824508F7200C37606 /* InfoPlist.strings in Resources */,
 				229D07C41F78709A00A22E37 /* CalendarDayItem.xib in Resources */,
 				229D07AA1F76EFEA00A22E37 /* MainMenu.xib in Resources */,
-				1EC9068524508E7800C37606 /* Info.plist in Resources */,
 				1E920C4123EF0B9400770DCD /* StatusCalLauncher.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

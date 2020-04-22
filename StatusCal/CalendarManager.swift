@@ -27,16 +27,14 @@ class CalendarManager {
         return eventStore.calendars(for: .event)
     }
     
-    func requescAccess() -> Bool {
+    func requestAccess(completion: @escaping (Bool) -> Void) {
         eventStore.requestAccess(to: .event) { granted, error in
-            return granted
+            completion(granted)
         }
-        return false
     }
     
     func containsEvents(startDate: Date, endDate: Date, calendar: EKCalendar) -> Bool {
         let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendar])
         return eventStore.events(matching: predicate).count  > 0
-        return false
     }
 }

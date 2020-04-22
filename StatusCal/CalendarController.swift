@@ -272,7 +272,9 @@ class CalendarController: NSObject {
     }
     
     func requestPermissions() {
-        calendarGranted = eventStore.requescAccess()
+        eventStore.requestAccess(completion: { (granted) in
+            self.calendarGranted = granted
+        })
     }
     
     func checkCalendarAuthorizationStatus() {
