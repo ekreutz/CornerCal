@@ -2,7 +2,7 @@
 //  AboutController.swift
 //  CornerCal
 //
-//  Created by Alexey Boldakov on 09.02.2020.
+//  Created by Alex Boldakov on 09.02.2020.
 //  Copyright © 2020 Alex Boldakov. All rights reserved.
 //
 

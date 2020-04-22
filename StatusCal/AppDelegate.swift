@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  CornerCal
 //
-//  Created by Emil Kreutzman on 23/09/2017.
+//  Created by Alex Boldakov on 23/09/2017.
 //  Copyright © 2020 Alex Boldakov. All rights reserved.
 //
 

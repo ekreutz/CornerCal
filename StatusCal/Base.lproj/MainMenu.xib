@@ -24,9 +24,11 @@
         <customObject id="MUN-z6-qDm" customClass="SettingsController" customModule="StatusCal" customModuleProvider="target">
             <connections>
                 <outlet property="calendarController" destination="SjA-MT-ZkN" id="OCh-2P-AQ8"/>
+                <outlet property="calendarsTableView" destination="K8f-jf-aBb" id="J8s-8Z-RbW"/>
                 <outlet property="showAMPMBox" destination="oWQ-Vp-99m" id="ZpL-b7-vyS"/>
                 <outlet property="showDateBox" destination="qib-nV-OYJ" id="mow-4N-fy8"/>
                 <outlet property="showDayOfWeekBox" destination="sw3-iQ-hki" id="VIU-SJ-3w9"/>
+                <outlet property="showEventBox" destination="fma-Wk-3hy" id="dzL-Pb-QxP"/>
                 <outlet property="showSecondsBox" destination="DsG-Kg-fxR" id="a3Q-Z4-nsY"/>
                 <outlet property="use24HoursBox" destination="E8n-nc-rfB" id="O1q-22-QEZ"/>
             </connections>
@@ -49,16 +51,16 @@
                 <outlet property="statusMenu" destination="Rpa-pt-dYz" id="3aK-wK-BeF"/>
             </connections>
         </customObject>
-        <menu id="Rpa-pt-dYz">
+        <menu showsStateColumn="NO" autoenablesItems="NO" id="Rpa-pt-dYz">
             <items>
-                <menuItem title="[Calendar Collection]" id="VJE-7c-auX">
+                <menuItem title="[Calendar Collection]" allowsKeyEquivalentWhenHidden="YES" id="VJE-7c-auX">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <outlet property="view" destination="IaI-2C-Pq8" id="1ja-Id-oug"/>
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-183" y="-115"/>
+            <point key="canvasLocation" x="-527" y="-188"/>
         </menu>
         <menu id="1v0-15-XWH">
             <items>
@@ -78,7 +80,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="eVc-fZ-bvT"/>
-                <menuItem title="Premium(soon)" id="9E8-Hb-g0V">
+                <menuItem title="Support this project" id="9E8-Hb-g0V">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="donateClick:" target="3bX-Tg-Ykk" id="AN5-hh-Pzl"/>
@@ -91,7 +93,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="92" y="-75"/>
+            <point key="canvasLocation" x="-306" y="-144"/>
         </menu>
         <customView canDrawConcurrently="YES" id="IaI-2C-Pq8">
             <rect key="frame" x="0.0" y="0.0" width="286" height="250"/>
@@ -195,137 +197,292 @@ IA
                 <constraint firstItem="LBc-DF-c7o" firstAttribute="top" secondItem="IaI-2C-Pq8" secondAttribute="top" constant="45" id="sbp-a5-6NZ"/>
                 <constraint firstItem="Q5d-GP-dLa" firstAttribute="top" secondItem="IaI-2C-Pq8" secondAttribute="top" constant="12" id="tsZ-rC-hk6"/>
             </constraints>
-            <point key="canvasLocation" x="-184" y="130"/>
+            <point key="canvasLocation" x="-466" y="99"/>
         </customView>
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2fn-5w-bKg">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
-            <rect key="contentRect" x="564" y="309" width="440" height="294"/>
+            <rect key="contentRect" x="564" y="309" width="630" height="447"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
-            <value key="minSize" type="size" width="440" height="294"/>
-            <value key="maxSize" type="size" width="440" height="294"/>
+            <value key="minSize" type="size" width="440" height="447"/>
+            <value key="maxSize" type="size" width="630" height="447"/>
             <view key="contentView" id="z56-gW-g35">
-                <rect key="frame" x="0.0" y="0.0" width="440" height="294"/>
+                <rect key="frame" x="0.0" y="0.0" width="631" height="447"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="DsG-Kg-fxR">
-                        <rect key="frame" x="178" y="241" width="204" height="27"/>
+                    <tabView translatesAutoresizingMaskIntoConstraints="NO" id="LAD-JF-P2g">
+                        <rect key="frame" x="13" y="10" width="605" height="423"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="23" id="xZM-ob-yBd"/>
+                            <constraint firstAttribute="width" constant="591" id="i6b-yJ-wgr"/>
                         </constraints>
-                        <buttonCell key="cell" type="check" title="Show the time with seconds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YBS-XV-zIF">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="0DQ-oF-JYj"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="249" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="E8n-nc-rfB">
-                        <rect key="frame" x="178" y="203" width="204" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="23" id="hOg-DA-KRv"/>
-                        </constraints>
-                        <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="X0B-xC-XWg">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="b6T-PW-c9s"/>
-                        </connections>
-                    </button>
-                    <button tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-Vp-99m">
-                        <rect key="frame" x="178" y="165" width="204" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="23" id="PG2-yx-cv6"/>
-                        </constraints>
-                        <buttonCell key="cell" type="check" title="Show AM/PM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wHM-Vz-n6I">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="Em2-DF-Vt2"/>
-                        </connections>
-                    </button>
-                    <button tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qib-nV-OYJ">
-                        <rect key="frame" x="178" y="100" width="204" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="23" id="ybk-zO-BXh"/>
-                        </constraints>
-                        <buttonCell key="cell" type="check" title="Show date" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="BDg-ZQ-zFx">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="NrB-aN-wmX"/>
-                        </connections>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-RT-lm9">
-                        <rect key="frame" x="18" y="240" width="154" height="23"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="150" id="1Z9-lS-nlF"/>
-                            <constraint firstAttribute="height" constant="23" id="iSl-Tf-hde"/>
-                        </constraints>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Time options" id="V7g-VS-7tR">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-hJ-eoO">
-                        <rect key="frame" x="18" y="102" width="154" height="23"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="23" id="dZk-wd-CBj"/>
-                            <constraint firstAttribute="width" constant="150" id="xA0-Bw-mfa"/>
-                        </constraints>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Date options" usesSingleLineMode="YES" id="fRr-jF-hAT">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-iQ-hki">
-                        <rect key="frame" x="178" y="62" width="204" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="23" id="CyT-QS-Ec1"/>
-                        </constraints>
-                        <buttonCell key="cell" type="check" title="Show the day of the week" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJf-Zh-g4M">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="9o9-nG-vbd"/>
-                        </connections>
-                    </button>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems>
+                            <tabViewItem label="Time options" identifier="" id="ljO-fF-h9p">
+                                <view key="view" id="A5B-9h-1S3">
+                                    <rect key="frame" x="10" y="33" width="585" height="377"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="249" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="E8n-nc-rfB">
+                                            <rect key="frame" x="298" y="270" width="146" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="hOg-DA-KRv"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="X0B-xC-XWg">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="b6T-PW-c9s"/>
+                                            </connections>
+                                        </button>
+                                        <button tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-Vp-99m">
+                                            <rect key="frame" x="298" y="223" width="103" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="PG2-yx-cv6"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="check" title="Show AM/PM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wHM-Vz-n6I">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="Em2-DF-Vt2"/>
+                                            </connections>
+                                        </button>
+                                        <button tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qib-nV-OYJ">
+                                            <rect key="frame" x="29" y="270" width="86" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="ybk-zO-BXh"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="check" title="Show date" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="BDg-ZQ-zFx">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="NrB-aN-wmX"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-RT-lm9">
+                                            <rect key="frame" x="298" y="327" width="154" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="1Z9-lS-nlF"/>
+                                                <constraint firstAttribute="height" constant="23" id="iSl-Tf-hde"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Time options" id="V7g-VS-7tR">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-hJ-eoO">
+                                            <rect key="frame" x="29" y="327" width="154" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="dZk-wd-CBj"/>
+                                                <constraint firstAttribute="width" constant="150" id="xA0-Bw-mfa"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Date options" usesSingleLineMode="YES" id="fRr-jF-hAT">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-iQ-hki">
+                                            <rect key="frame" x="29" y="223" width="178" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="CyT-QS-Ec1"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="check" title="Show the day of the week" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJf-Zh-g4M">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="9o9-nG-vbd"/>
+                                            </connections>
+                                        </button>
+                                        <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="DsG-Kg-fxR">
+                                            <rect key="frame" x="298" y="176" width="192" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="xZM-ob-yBd"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="check" title="Show the time with seconds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YBS-XV-zIF">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="0DQ-oF-JYj"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DuK-RT-lm9" firstAttribute="leading" secondItem="A5B-9h-1S3" secondAttribute="leading" constant="300" id="4Bf-Fq-rHC"/>
+                                        <constraint firstItem="YMg-hJ-eoO" firstAttribute="leading" secondItem="A5B-9h-1S3" secondAttribute="leading" constant="31" id="5Ah-dl-BRg"/>
+                                        <constraint firstAttribute="trailing" secondItem="sw3-iQ-hki" secondAttribute="trailing" priority="750" constant="380" id="6Se-Wq-zfz"/>
+                                        <constraint firstItem="oWQ-Vp-99m" firstAttribute="top" secondItem="A5B-9h-1S3" secondAttribute="top" constant="129" id="7Rr-Qa-Fd7"/>
+                                        <constraint firstItem="DsG-Kg-fxR" firstAttribute="top" secondItem="A5B-9h-1S3" secondAttribute="top" constant="176" id="9Dv-wc-oov"/>
+                                        <constraint firstItem="qib-nV-OYJ" firstAttribute="top" secondItem="A5B-9h-1S3" secondAttribute="top" constant="82" id="HaF-FV-io8"/>
+                                        <constraint firstItem="E8n-nc-rfB" firstAttribute="leading" secondItem="A5B-9h-1S3" secondAttribute="leading" constant="300" id="Ilm-bT-eqR"/>
+                                        <constraint firstItem="E8n-nc-rfB" firstAttribute="top" secondItem="A5B-9h-1S3" secondAttribute="top" constant="82" id="Itf-kH-ASy"/>
+                                        <constraint firstItem="qib-nV-OYJ" firstAttribute="leading" secondItem="A5B-9h-1S3" secondAttribute="leading" constant="31" id="Mme-ej-BPC"/>
+                                        <constraint firstItem="sw3-iQ-hki" firstAttribute="leading" secondItem="A5B-9h-1S3" secondAttribute="leading" constant="31" id="NGf-Vu-QE2"/>
+                                        <constraint firstItem="DsG-Kg-fxR" firstAttribute="leading" secondItem="A5B-9h-1S3" secondAttribute="leading" constant="300" id="Ozj-SW-QhX"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YMg-hJ-eoO" secondAttribute="trailing" constant="20" symbolic="YES" id="SqN-zT-spC"/>
+                                        <constraint firstAttribute="trailing" secondItem="DuK-RT-lm9" secondAttribute="trailing" priority="750" constant="135" id="WGE-G9-dsD"/>
+                                        <constraint firstAttribute="trailing" secondItem="oWQ-Vp-99m" secondAttribute="trailing" priority="750" constant="186" id="d9g-0t-xDY"/>
+                                        <constraint firstItem="DuK-RT-lm9" firstAttribute="top" secondItem="A5B-9h-1S3" secondAttribute="top" constant="27" id="eyQ-aq-VqV"/>
+                                        <constraint firstAttribute="trailing" secondItem="DsG-Kg-fxR" secondAttribute="trailing" priority="750" constant="97" id="hAb-U8-QWc"/>
+                                        <constraint firstAttribute="trailing" secondItem="E8n-nc-rfB" secondAttribute="trailing" priority="750" constant="143" id="mf2-Wk-Ieq"/>
+                                        <constraint firstItem="oWQ-Vp-99m" firstAttribute="leading" secondItem="A5B-9h-1S3" secondAttribute="leading" constant="300" id="pq8-fN-3MD"/>
+                                        <constraint firstItem="YMg-hJ-eoO" firstAttribute="top" secondItem="A5B-9h-1S3" secondAttribute="top" constant="27" id="qEo-gc-fPE"/>
+                                        <constraint firstItem="sw3-iQ-hki" firstAttribute="top" secondItem="A5B-9h-1S3" secondAttribute="top" constant="129" id="rNv-Vx-Ric"/>
+                                        <constraint firstAttribute="trailing" secondItem="qib-nV-OYJ" secondAttribute="trailing" priority="750" constant="472" id="x9j-j0-Pe6"/>
+                                    </constraints>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Calendar options" identifier="" id="beM-E2-q1p">
+                                <view key="view" id="yZ9-Wb-7Zc">
+                                    <rect key="frame" x="10" y="33" width="585" height="377"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fma-Wk-3hy">
+                                            <rect key="frame" x="18" y="341" width="155" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Show calendar events" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WXx-sH-f08">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="showEventClicked:" target="MUN-z6-qDm" id="bbc-0I-5SA"/>
+                                            </connections>
+                                        </button>
+                                        <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUc-bp-mHj">
+                                            <rect key="frame" x="20" y="20" width="545" height="303"/>
+                                            <clipView key="contentView" id="Ec4-es-k1D">
+                                                <rect key="frame" x="1" y="1" width="543" height="301"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="K8f-jf-aBb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="543" height="301"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <size key="intercellSpacing" width="3" height="2"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                        <tableColumns>
+                                                            <tableColumn width="440" minWidth="40" maxWidth="1000" id="lrw-3K-GA3">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Calendar name">
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                </tableHeaderCell>
+                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="j3n-Ka-Di9">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                <prototypeCellViews>
+                                                                    <tableCellView identifier="textCell" id="XiP-eC-3wy">
+                                                                        <rect key="frame" x="1" y="1" width="440" height="17"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RGr-ZU-GSa">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="440" height="17"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="17" id="jpG-8b-b1U"/>
+                                                                                </constraints>
+                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="3go-ao-ssF">
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="RGr-ZU-GSa" firstAttribute="centerX" secondItem="XiP-eC-3wy" secondAttribute="centerX" id="ZJ7-BD-t9v"/>
+                                                                            <constraint firstItem="RGr-ZU-GSa" firstAttribute="leading" secondItem="XiP-eC-3wy" secondAttribute="leading" constant="2" id="bfa-nm-5Vt"/>
+                                                                            <constraint firstItem="RGr-ZU-GSa" firstAttribute="centerY" secondItem="XiP-eC-3wy" secondAttribute="centerY" id="saB-I4-esR"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="textField" destination="RGr-ZU-GSa" id="Mlq-hW-nZj"/>
+                                                                        </connections>
+                                                                    </tableCellView>
+                                                                </prototypeCellViews>
+                                                            </tableColumn>
+                                                            <tableColumn width="97" minWidth="10" maxWidth="3.4028234663852886e+38" id="RBd-Yg-cbB">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center">
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </tableHeaderCell>
+                                                                <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fsk-gF-WcK">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                <prototypeCellViews>
+                                                                    <tableCellView identifier="chekboxCell" id="wnI-a5-ism" customClass="CheckboxCell" customModule="StatusCal" customModuleProvider="target">
+                                                                        <rect key="frame" x="444" y="1" width="97" height="17"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BGL-gl-b8x">
+                                                                                <rect key="frame" x="38" y="0.0" width="22" height="18"/>
+                                                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cnr-pl-TMA">
+                                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                                    <font key="font" metaFont="system"/>
+                                                                                </buttonCell>
+                                                                                <connections>
+                                                                                    <action selector="chekboxClicked:" target="wnI-a5-ism" id="xCK-Zb-Xk2"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="BGL-gl-b8x" firstAttribute="centerY" secondItem="wnI-a5-ism" secondAttribute="centerY" id="G6w-9c-GjY"/>
+                                                                            <constraint firstItem="BGL-gl-b8x" firstAttribute="centerX" secondItem="wnI-a5-ism" secondAttribute="centerX" id="jwn-Dx-Qla"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="chekbox" destination="BGL-gl-b8x" id="oy3-Oc-Eg4"/>
+                                                                        </connections>
+                                                                    </tableCellView>
+                                                                </prototypeCellViews>
+                                                            </tableColumn>
+                                                        </tableColumns>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="MUN-z6-qDm" id="B9M-0z-yPi"/>
+                                                            <outlet property="delegate" destination="MUN-z6-qDm" id="hdF-3k-7f8"/>
+                                                        </connections>
+                                                    </tableView>
+                                                </subviews>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cde-i8-g1l">
+                                                <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="YoY-41-0KK">
+                                                <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HUc-bp-mHj" firstAttribute="top" secondItem="fma-Wk-3hy" secondAttribute="bottom" constant="20" id="8ON-C9-rsE"/>
+                                        <constraint firstAttribute="trailing" secondItem="HUc-bp-mHj" secondAttribute="trailing" constant="20" id="BlG-pF-AZa"/>
+                                        <constraint firstItem="HUc-bp-mHj" firstAttribute="leading" secondItem="yZ9-Wb-7Zc" secondAttribute="leading" constant="20" id="EWM-5J-N9N"/>
+                                        <constraint firstItem="fma-Wk-3hy" firstAttribute="leading" secondItem="yZ9-Wb-7Zc" secondAttribute="leading" constant="20" id="MW7-aT-lUG"/>
+                                        <constraint firstAttribute="bottom" secondItem="HUc-bp-mHj" secondAttribute="bottom" constant="20" id="eVK-Gu-MGU"/>
+                                        <constraint firstItem="fma-Wk-3hy" firstAttribute="top" secondItem="yZ9-Wb-7Zc" secondAttribute="top" constant="20" id="sUF-ZH-FH2"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fma-Wk-3hy" secondAttribute="trailing" priority="750" constant="20" symbolic="YES" id="trF-sG-k4Y"/>
+                                    </constraints>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
+                    </tabView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="YMg-hJ-eoO" firstAttribute="top" secondItem="DuK-RT-lm9" secondAttribute="bottom" constant="115" id="359-f6-jMA"/>
-                    <constraint firstItem="oWQ-Vp-99m" firstAttribute="leading" secondItem="E8n-nc-rfB" secondAttribute="leading" id="7tI-cH-c81"/>
-                    <constraint firstAttribute="trailing" secondItem="qib-nV-OYJ" secondAttribute="trailing" priority="750" constant="60" id="9N4-R5-99I"/>
-                    <constraint firstAttribute="trailing" secondItem="oWQ-Vp-99m" secondAttribute="trailing" priority="750" constant="60" id="9oC-1B-27o"/>
-                    <constraint firstItem="E8n-nc-rfB" firstAttribute="top" secondItem="DsG-Kg-fxR" secondAttribute="bottom" constant="15" id="AnY-an-gdd"/>
-                    <constraint firstItem="DsG-Kg-fxR" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="180" id="Gxr-wq-x7J"/>
-                    <constraint firstItem="sw3-iQ-hki" firstAttribute="top" secondItem="qib-nV-OYJ" secondAttribute="bottom" constant="15" id="KYT-Jt-Dhq"/>
-                    <constraint firstItem="qib-nV-OYJ" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="180" id="PG7-g7-Fcr"/>
-                    <constraint firstAttribute="trailing" secondItem="E8n-nc-rfB" secondAttribute="trailing" priority="750" constant="60" id="QLH-DO-r5o"/>
-                    <constraint firstAttribute="trailing" secondItem="YMg-hJ-eoO" secondAttribute="trailing" priority="750" constant="270" id="Qnj-yU-vpw"/>
-                    <constraint firstItem="E8n-nc-rfB" firstAttribute="leading" secondItem="DsG-Kg-fxR" secondAttribute="leading" id="Vwm-QL-ONa"/>
-                    <constraint firstItem="DuK-RT-lm9" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="20" id="WB1-2w-ZfH"/>
-                    <constraint firstItem="oWQ-Vp-99m" firstAttribute="top" secondItem="E8n-nc-rfB" secondAttribute="bottom" constant="15" id="WPw-82-9ki"/>
-                    <constraint firstItem="sw3-iQ-hki" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="180" id="bbq-63-57l"/>
-                    <constraint firstAttribute="trailing" secondItem="DuK-RT-lm9" secondAttribute="trailing" priority="750" constant="270" id="lQW-w0-hwv"/>
-                    <constraint firstItem="qib-nV-OYJ" firstAttribute="top" secondItem="YMg-hJ-eoO" secondAttribute="top" id="lSQ-xG-abl"/>
-                    <constraint firstItem="DsG-Kg-fxR" firstAttribute="top" secondItem="z56-gW-g35" secondAttribute="top" constant="28" id="oOI-i6-HjL"/>
-                    <constraint firstAttribute="trailing" secondItem="sw3-iQ-hki" secondAttribute="trailing" priority="750" constant="60" id="s54-Mr-kNC"/>
-                    <constraint firstAttribute="trailing" secondItem="DsG-Kg-fxR" secondAttribute="trailing" priority="750" constant="60" id="syX-cw-gLU"/>
-                    <constraint firstItem="YMg-hJ-eoO" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="20" id="t8H-dB-9AI"/>
-                    <constraint firstItem="DuK-RT-lm9" firstAttribute="top" secondItem="z56-gW-g35" secondAttribute="top" constant="31" id="zN8-VV-Xan"/>
+                    <constraint firstAttribute="trailing" secondItem="LAD-JF-P2g" secondAttribute="trailing" constant="20" id="2Ax-tw-Bg9"/>
+                    <constraint firstItem="LAD-JF-P2g" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="20" id="70n-cx-Fyu"/>
+                    <constraint firstAttribute="bottom" secondItem="LAD-JF-P2g" secondAttribute="bottom" constant="20" id="guj-Mq-92d"/>
+                    <constraint firstItem="LAD-JF-P2g" firstAttribute="top" secondItem="z56-gW-g35" secondAttribute="top" constant="20" id="r4w-2I-TPz"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="MUN-z6-qDm" id="pyF-2S-Dp6"/>
             </connections>
-            <point key="canvasLocation" x="-272" y="469"/>
+            <point key="canvasLocation" x="-257.5" y="545.5"/>
         </window>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="GM6-pk-LsQ">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>

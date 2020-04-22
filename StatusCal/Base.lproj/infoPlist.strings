@@ -1,0 +1,10 @@
+/* 
+  infoPlist.strings
+  StatusCal
+
+  Created by Alexey Boldakov on 22.04.2020.
+  Copyright © 2020 Alex Boldakov. All rights reserved.
+*/
+
+
+"NSCalendarsUsageDescription" = "Permission is required to receive information about available calendar events";

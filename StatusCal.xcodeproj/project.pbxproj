@@ -13,6 +13,10 @@
 		1E920C4023EF0B8400770DCD /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E920C3F23EF0B8400770DCD /* ServiceManagement.framework */; };
 		1E920C4123EF0B9400770DCD /* StatusCalLauncher.app in Resources */ = {isa = PBXBuildFile; fileRef = 1E920C2E23EF0A7300770DCD /* StatusCalLauncher.app */; };
 		1E92D46D23F03EE600B56673 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E92D46C23F03EE600B56673 /* Main.xib */; };
+		1EB5FCB0244F3C2B00311991 /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5FCAF244F3C2B00311991 /* CheckboxCell.swift */; };
+		1EB5FCB2244F485F00311991 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5FCB1244F485F00311991 /* CalendarManager.swift */; };
+		1EC9068524508E7800C37606 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EC9068424508E7700C37606 /* Info.plist */; };
+		1EC9068824508F7200C37606 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EC9068A24508F7200C37606 /* InfoPlist.strings */; };
 		1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8AB8423EFE09400290AD7 /* AboutController.swift */; };
 		229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07A41F76EFEA00A22E37 /* AppDelegate.swift */; };
 		229D07A71F76EFEA00A22E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A61F76EFEA00A22E37 /* Assets.xcassets */; };
@@ -57,12 +61,16 @@
 		1E920C3823EF0A7500770DCD /* StatusCalLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatusCalLauncher.entitlements; sourceTree = "<group>"; };
 		1E920C3F23EF0B8400770DCD /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		1E92D46C23F03EE600B56673 /* Main.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Main.xib; sourceTree = "<group>"; };
+		1EB5FCAF244F3C2B00311991 /* CheckboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
+		1EB5FCB1244F485F00311991 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		1EC9068424508E7700C37606 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EC9068924508F7200C37606 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1EC9068B24508F7400C37606 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1ED8AB8423EFE09400290AD7 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		229D07A11F76EFEA00A22E37 /* StatusCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		229D07A41F76EFEA00A22E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		229D07A61F76EFEA00A22E37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		229D07A91F76EFEA00A22E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		229D07AB1F76EFEA00A22E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		229D07AC1F76EFEA00A22E37 /* StatusCal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatusCal.entitlements; sourceTree = "<group>"; };
 		229D07B21F76FB0200A22E37 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		229D07C11F78709A00A22E37 /* CalendarDayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayItem.swift; sourceTree = "<group>"; };
@@ -132,9 +140,9 @@
 		229D07A31F76EFEA00A22E37 /* StatusCal */ = {
 			isa = PBXGroup;
 			children = (
+				1EC9068424508E7700C37606 /* Info.plist */,
 				229D07A41F76EFEA00A22E37 /* AppDelegate.swift */,
 				229D07A61F76EFEA00A22E37 /* Assets.xcassets */,
-				229D07AB1F76EFEA00A22E37 /* Info.plist */,
 				229D07AC1F76EFEA00A22E37 /* StatusCal.entitlements */,
 				229D07A81F76EFEA00A22E37 /* MainMenu.xib */,
 				229D07B21F76FB0200A22E37 /* MainMenuController.swift */,
@@ -143,6 +151,9 @@
 				1ED8AB8423EFE09400290AD7 /* AboutController.swift */,
 				229D07C11F78709A00A22E37 /* CalendarDayItem.swift */,
 				229D07C21F78709A00A22E37 /* CalendarDayItem.xib */,
+				1EB5FCAF244F3C2B00311991 /* CheckboxCell.swift */,
+				1EB5FCB1244F485F00311991 /* CalendarManager.swift */,
+				1EC9068A24508F7200C37606 /* InfoPlist.strings */,
 			);
 			path = StatusCal;
 			sourceTree = "<group>";
@@ -241,8 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				229D07A71F76EFEA00A22E37 /* Assets.xcassets in Resources */,
+				1EC9068824508F7200C37606 /* InfoPlist.strings in Resources */,
 				229D07C41F78709A00A22E37 /* CalendarDayItem.xib in Resources */,
 				229D07AA1F76EFEA00A22E37 /* MainMenu.xib in Resources */,
+				1EC9068524508E7800C37606 /* Info.plist in Resources */,
 				1E920C4123EF0B9400770DCD /* StatusCalLauncher.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +279,8 @@
 				22B3E0961F9BEF4400DA4018 /* SettingsController.swift in Sources */,
 				22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */,
 				229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */,
+				1EB5FCB0244F3C2B00311991 /* CheckboxCell.swift in Sources */,
+				1EB5FCB2244F485F00311991 /* CalendarManager.swift in Sources */,
 				229D07C31F78709A00A22E37 /* CalendarDayItem.swift in Sources */,
 				1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */,
 			);
@@ -282,6 +297,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1EC9068A24508F7200C37606 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EC9068924508F7200C37606 /* en */,
+				1EC9068B24508F7400C37606 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		229D07A81F76EFEA00A22E37 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -493,6 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 3PVYN9G2L5;
 				INFOPLIST_FILE = "$(SRCROOT)/StatusCal/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

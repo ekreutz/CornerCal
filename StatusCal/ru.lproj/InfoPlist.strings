@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  StatusCal
+
+  Created by Alexey Boldakov on 22.04.2020.
+  Copyright © 2020 Alex Boldakov. All rights reserved.
+*/
+
+
+"NSCalendarsUsageDescription" = "Разрешения для получения данных о доступных событиях календаря";

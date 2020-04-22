@@ -57,3 +57,12 @@
 
 /* Class = "NSTextField"; title = "Copyright © 2020 Alex Boldakov. All rights reserved."; ObjectID = "3yw-kd-nA2"; */
 "3yw-kd-nA2.text" = "Copyright © 2020 Alex Boldakov. All rights reserved.";
+
+/* Class = "NSTabViewItem"; title = "Time options"; ObjectID = "ljO-fF-h9p"; */
+"ljO-fF-h9p.label" = "Time options";
+
+/* Class = "NSTabViewItem"; title = "Calendar options"; ObjectID = "beM-E2-q1p"; */
+"beM-E2-q1p.label" = "Calendar options";
+
+/* Class = "NSButtonCell"; title = "Show calendar events"; ObjectID = "WXx-sH-f08"; */
+"WXx-sH-f08.title" = "Show calendar events";

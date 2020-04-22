@@ -2,7 +2,7 @@
 //  CalendarDayItem.swift
 //  CornerCal
 //
-//  Created by Emil Kreutzman on 24/09/2017.
+//  Created by Alex Boldakov on 24/09/2017.
 //  Copyright © 2020 Alex Boldakov. All rights reserved.
 //
 
@@ -37,6 +37,10 @@ class CalendarDayItem: NSCollectionViewItem {
     
     public func setText(text: String) {
         textField?.stringValue = text
+    }
+    
+    public func hasEvents(_ has: Bool) {
+        imageView?.isHidden = !has
     }
     
     override func viewDidLoad() {

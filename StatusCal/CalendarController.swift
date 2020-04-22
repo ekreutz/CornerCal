@@ -2,11 +2,12 @@
 //  CalendarController.swift
 //  CornerCal
 //
-//  Created by Emil Kreutzman on 08/10/2017.
+//  Created by Alex Boldakov on 08/10/2017.
 //  Copyright © 2020 Alex Boldakov. All rights reserved.
 //
 
 import Cocoa
+import EventKit
 
 struct Day {
     var isNumber = false
@@ -15,10 +16,10 @@ struct Day {
     var text = "0"
     var date = Date()
     var formattedDate = ""
+    var hasEvents = false
 }
 
 class CalendarController: NSObject {
-    
     var calendar = Calendar.current
     let formatter = DateFormatter()
     let monthFormatter = DateFormatter()
@@ -38,6 +39,12 @@ class CalendarController: NSObject {
     
     var onTimeUpdate: (() -> ())? = nil
     var onCalendarUpdate: (() -> ())? = nil
+    var eventStore = CalendarManager.shared
+    var calendarGranted: Bool = false
+    
+    var events: Dictionary<Int, Int> = [:]
+    var showEvents: Bool = false
+    var enabledCalendars: [String: String] = [:]
     
     override init() {
         super.init()
@@ -56,6 +63,7 @@ class CalendarController: NSObject {
         shownItemCount = daysInWeek * (maxWeeksInMonth + 2 + 1)
         
         updateCurrentlyShownDays()
+        checkCalendarAuthorizationStatus()
     }
     
     func setDateFormat() {
@@ -177,23 +185,24 @@ class CalendarController: NSObject {
     func getItemAt(index: Int) -> Day {
         var day = Day()
         let dayOffset = index - daysInWeek
-        let date = calendar.date(byAdding: .day, value: dayOffset, to: lastFirstWeekdayLastMonth!)!
+        let mDate = calendar.date(byAdding: .day, value: dayOffset, to: lastFirstWeekdayLastMonth!)!
+        let date = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: mDate)!
+        let endDate = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: mDate)!
         
         if (index < daysInWeek) {
+            // For days of week label (Mon, Teu ... etc)
             day.text = weekdays[(calendar.firstWeekday + index - 1) % daysInWeek].capitalizingFirstLetter()
             day.date = date
             day.formattedDate = formatter.string(from: date)
-            
         } else {
-            
-            
-            
+            // For days
             day.date = date
             day.formattedDate = formatter.string(from: date)
             day.isNumber = true
             day.text = String(calendar.ordinality(of: .day, in: .month, for: date)!)
             day.isCurrentMonth = calendar.isDate(date, equalTo: currentMonth!, toGranularity: .month)
             day.isToday = calendar.isDateInToday(date)
+            day.hasEvents = dateHasEvents(date: date, endDate: endDate)
         }
         
         return day
@@ -214,21 +223,82 @@ class CalendarController: NSObject {
     }
     
     func incrementMonth() {
-        monthOffset += 1
-        updateCurrentlyShownDays()
-        onCalendarUpdate?()
+        DispatchQueue.main.async(execute: {
+            self.monthOffset += 1
+            self.updateCurrentlyShownDays()
+            self.onCalendarUpdate?()
+        })
     }
     
     func decrementMonth() {
-        monthOffset -= 1
-        updateCurrentlyShownDays()
-        onCalendarUpdate?()
+        DispatchQueue.main.async(execute: {
+            self.monthOffset -= 1
+            self.updateCurrentlyShownDays()
+            self.onCalendarUpdate?()
+        })
     }
     
     func resetMonth() {
-        monthOffset = 0
-        updateCurrentlyShownDays()
-        onCalendarUpdate?()
+        DispatchQueue.main.async(execute: {
+            self.monthOffset = 0
+            self.updateCurrentlyShownDays()
+            self.onCalendarUpdate?()
+        })
+    }
+    
+    func dateHasEvents(date: Date, endDate: Date) -> Bool {
+        if !showEvents {
+            return false
+        }
+        
+        let calendars = eventStore.getCalendars().filter { enabledCalendars[$0.title] != nil }
+
+        for calendar in calendars {
+            let contains = eventStore.containsEvents(startDate: date, endDate: endDate, calendar: calendar)
+            if contains {
+                return contains
+            }
+        }
+
+        return false
+    }
+    
+    func refreshEventsState() {
+        let defaults = UserDefaults.standard
+        let keys = SettingsKeys()
+        showEvents = defaults.bool(forKey: keys.SHOW_EVENTS)
+        enabledCalendars = defaults.value(forKey: keys.SELECTED_CALENDARS) as? [String : String] ?? [:]
+        resetMonth()
+    }
+    
+    func requestPermissions() {
+        calendarGranted = eventStore.requescAccess()
+    }
+    
+    func checkCalendarAuthorizationStatus() {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+
+        switch (status) {
+
+        case EKAuthorizationStatus.notDetermined:
+            requestPermissions()
+        case EKAuthorizationStatus.authorized:
+            self.calendarGranted = true
+        case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+            print("RESTRICTED or DENIED")
+            showMessagePrompt("RESTRICTED", message: "RESTRICTED or DENIED")
+        default: break
+
+        }
+    }
+    
+    func showMessagePrompt(_ title: String, message: String) {
+        let alert = NSAlert.init()
+        alert.informativeText = title
+        alert.messageText = message
+        
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
     }
 }
 
