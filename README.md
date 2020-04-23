@@ -2,7 +2,7 @@
 
 This project is a fork of the [ekreutz/CornerCal](https://github.com/ekreutz/CornerCal)  with some changes. 
 
-Download latest version: [StatusCal.dmg.zip](https://github.com/AlexeyBoldakov/StatusCal/raw/master/builds/CornerCal.dmg.zip) (supports macOS Sierra 10.14 and higher)
+Download latest version: [StatusCal.dmg.zip](https://github.com/AlexeyBoldakov/StatusCal/raw/master/builds/StatusCal.dmg.zip) (supports macOS Mojave 10.14 and higher)
 
 
 
