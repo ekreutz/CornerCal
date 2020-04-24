@@ -1,68 +1,41 @@
-/* Class = "NSWindow"; title = "Settings"; ObjectID = "2fn-5w-bKg"; */
-"2fn-5w-bKg.title" = "Настройки";
 
-/* Class = "NSWindow"; title = "About"; ObjectID = "jdE-c0-rAD"; */
-"jdE-c0-rAD.title" = "О приложении";
-
-/* Class = "NSButtonCell"; title = "September 2015"; ObjectID = "5Js-yS-1ZZ"; */
-"5Js-yS-1ZZ.title" = "Сентябрь 2015";
-
-/* Class = "NSButtonCell"; title = "Show date"; ObjectID = "BDg-ZQ-zFx"; */
-"BDg-ZQ-zFx.title" = "Показать дату";
-
-/* Class = "NSButtonCell"; title = "◀"; ObjectID = "JkT-H5-zCl"; */
-"JkT-H5-zCl.title" = "◀";
-
-/* Class = "NSButtonCell"; title = "Show the day of the week"; ObjectID = "SJf-Zh-g4M"; */
-"SJf-Zh-g4M.title" = "Показывать день недели";
-
-/* Class = "NSTextFieldCell"; title = "Time options"; ObjectID = "V7g-VS-7tR"; */
-"V7g-VS-7tR.title" = "Настройки времени";
-
-/* Class = "NSButtonCell"; title = "Use a 24-hour clock"; ObjectID = "X0B-xC-XWg"; */
-"X0B-xC-XWg.title" = "24-часовой формат";
-
-/* Class = "NSButtonCell"; title = "Show the time with seconds"; ObjectID = "YBS-XV-zIF"; */
-"YBS-XV-zIF.title" = "Показать секунды";
-
-/* Class = "NSTextFieldCell"; title = "Date options"; ObjectID = "fRr-jF-hAT"; */
-"fRr-jF-hAT.title" = "Настройки даты";
-
-/* Class = "NSButtonCell"; title = "▶"; ObjectID = "gys-YA-Nr4"; */
-"gys-YA-Nr4.title" = "▶";
-
-/* Class = "NSButtonCell"; title = "Show AM/PM"; ObjectID = "wHM-Vz-n6I"; */
-"wHM-Vz-n6I.title" = "Показать AM/PM";
-
-/* Class = "NSMenuItem"; title = "[Calendar Collection]"; ObjectID = "VJE-7c-auX"; */
-"VJE-7c-auX.title" = "[Calendar Collection]";
-
-/* Class = "NSMenuItem"; title = "Support this project"; ObjectID = "9E8-Hb-g0V"; */
-"9E8-Hb-g0V.title" = "Поддержать проект";
-
-/* Class = "NSMenuItem"; title = "Settings"; ObjectID = "q73-Mh-ATb"; */
-"q73-Mh-ATb.title" = "Открыть Календарь";
-
-/* Class = "NSMenuItem"; title = "Settings"; ObjectID = "0GA-Pk-dni"; */
+/* Root menu */
 "0GA-Pk-dni.title" = "Настройки";
-
-/* Class = "NSMenuItem"; title = "About"; ObjectID = "5Ab-Tp-fCl"; */
+"q73-Mh-ATb.title" = "Открыть Календарь";
 "5Ab-Tp-fCl.title" = "О приложении";
-
-/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "nwf-du-ktX"; */
+"9E8-Hb-g0V.title" = "Поддержать проект";
+"Imf-7V-9Mt.title" = "Проверить наличие обновлений";
 "nwf-du-ktX.title" = "Выход";
 
-/* Class = "NSTextField"; title = "Version"; ObjectID = "b6y-2e-ZIm"; */
-"b6y-2e-ZIm.title" = "Версия";
+/* Calendar */
+"VJE-7c-auX.title" = "[Calendar Collection]";
+"5Js-yS-1ZZ.title" = "Сентябрь 2015";
+"JkT-H5-zCl.title" = "◀";
+"gys-YA-Nr4.title" = "▶";
 
-/* Class = "NSTextField"; title = "Copyright © 2020 Alex Boldakov. All rights reserved."; ObjectID = "3yw-kd-nA2"; */
-"3yw-kd-nA2.text" = "Copyright © 2020 Alex Boldakov. Все права защищены.";
 
-/* Class = "NSTabViewItem"; title = "Time options"; ObjectID = "ljO-fF-h9p"; */
+/* Settings */
+"2fn-5w-bKg.title" = "Настройки";
+"UML-DR-xC2.label" = "Основные";
+"nZO-xo-XSf.title" = "Автозапуск при входе в систему";
 "ljO-fF-h9p.label" = "Настройки времени";
-
-/* Class = "NSTabViewItem"; title = "Calendar options"; ObjectID = "beM-E2-q1p"; */
+"V7g-VS-7tR.title" = "Настройки времени";
+"fRr-jF-hAT.title" = "Настройки даты";
+"BDg-ZQ-zFx.title" = "Показывать дату";
+"SJf-Zh-g4M.title" = "Показывать день недели";
+"X0B-xC-XWg.title" = "24-часовой формат";
+"YBS-XV-zIF.title" = "Показывать секунды";
+"wHM-Vz-n6I.title" = "Показать AM/PM";
 "beM-E2-q1p.label" = "Настройки календаря";
-
-/* Class = "NSButtonCell"; title = "Show calendar events"; ObjectID = "WXx-sH-f08"; */
 "WXx-sH-f08.title" = "Показывать события календарей";
+
+
+/* About */
+"jdE-c0-rAD.title" = "О приложении";
+"b6y-2e-ZIm.title" = "Версия";
+"04C-Hw-fMT.title" = "Copyright © 2020 Алексей Болдаков. Все права защищены.";
+"saC-ne-fH1.title" = "Страница проекта";
+
+
+/* Updates */
+"Zcv-LP-zGA.title" = "Загрузить последнюю версию";

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0E5BC32453667600D34828 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0E5BC22453667600D34828 /* String.swift */; };
+		1E0E5BCD2453682900D34828 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E0E5BCF2453682900D34828 /* Localizable.strings */; };
+		1E9130EB2451FA8500667106 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9130EA2451FA8500667106 /* NetworkManager.swift */; };
+		1E9130ED2451FB6300667106 /* VersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9130EC2451FB6300667106 /* VersionResponse.swift */; };
+		1E9130F02452067D00667106 /* UpdatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9130EF2452067D00667106 /* UpdatesController.swift */; };
+		1E9130F224520AC900667106 /* UpdateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9130F124520AC900667106 /* UpdateState.swift */; };
 		1E920C3123EF0A7300770DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E920C3023EF0A7300770DCD /* AppDelegate.swift */; };
 		1E920C3323EF0A7500770DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E920C3223EF0A7500770DCD /* Assets.xcassets */; };
 		1E920C3D23EF0B5C00770DCD /* StatusCalLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E920C2E23EF0A7300770DCD /* StatusCalLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -17,6 +23,8 @@
 		1EB5FCB2244F485F00311991 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5FCB1244F485F00311991 /* CalendarManager.swift */; };
 		1EC9068824508F7200C37606 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EC9068A24508F7200C37606 /* InfoPlist.strings */; };
 		1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8AB8423EFE09400290AD7 /* AboutController.swift */; };
+		1EF721FE2450D05A00545E18 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF721FD2450D05A00545E18 /* DefaultsManager.swift */; };
+		1EF722002450D28F00545E18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF721FF2450D28F00545E18 /* Constants.swift */; };
 		229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07A41F76EFEA00A22E37 /* AppDelegate.swift */; };
 		229D07A71F76EFEA00A22E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A61F76EFEA00A22E37 /* Assets.xcassets */; };
 		229D07AA1F76EFEA00A22E37 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229D07A81F76EFEA00A22E37 /* MainMenu.xib */; };
@@ -51,8 +59,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E0E5BC22453667600D34828 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		1E0E5BCE2453682900D34828 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1E0E5BD02453682D00D34828 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1E54C8F223EED3200031140E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		1E54C8F423EED7CB0031140E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		1E7BD5A72451EB08002372EF /* StatusCalDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatusCalDebug.entitlements; sourceTree = "<group>"; };
+		1E9130EA2451FA8500667106 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1E9130EC2451FB6300667106 /* VersionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionResponse.swift; sourceTree = "<group>"; };
+		1E9130EF2452067D00667106 /* UpdatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesController.swift; sourceTree = "<group>"; };
+		1E9130F124520AC900667106 /* UpdateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateState.swift; sourceTree = "<group>"; };
 		1E920C2E23EF0A7300770DCD /* StatusCalLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusCalLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E920C3023EF0A7300770DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E920C3223EF0A7500770DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +82,8 @@
 		1EC9068924508F7200C37606 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1EC9068B24508F7400C37606 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1ED8AB8423EFE09400290AD7 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		1EF721FD2450D05A00545E18 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		1EF721FF2450D28F00545E18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		229D07A11F76EFEA00A22E37 /* StatusCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		229D07A41F76EFEA00A22E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		229D07A61F76EFEA00A22E37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +115,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E0E5BC42453667C00D34828 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1E0E5BC22453667600D34828 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1E9130EE245202C500667106 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E9130EC2451FB6300667106 /* VersionResponse.swift */,
+				1E9130F124520AC900667106 /* UpdateState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1E920C2F23EF0A7300770DCD /* StatusCalLauncher */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +150,38 @@
 				1E920C3F23EF0B8400770DCD /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1EF722022450DAD000545E18 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1EB5FCB1244F485F00311991 /* CalendarManager.swift */,
+				1EF721FD2450D05A00545E18 /* DefaultsManager.swift */,
+				1E9130EA2451FA8500667106 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1EF722032450DAEB00545E18 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				229D07B21F76FB0200A22E37 /* MainMenuController.swift */,
+				22D879111F8AD27A00D1956C /* CalendarController.swift */,
+				22B3E0951F9BEF4400DA4018 /* SettingsController.swift */,
+				1ED8AB8423EFE09400290AD7 /* AboutController.swift */,
+				1E9130EF2452067D00667106 /* UpdatesController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1EF722042450DB0800545E18 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				229D07C11F78709A00A22E37 /* CalendarDayItem.swift */,
+				229D07C21F78709A00A22E37 /* CalendarDayItem.xib */,
+				1EB5FCAF244F3C2B00311991 /* CheckboxCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		229D07981F76EFEA00A22E37 = {
@@ -139,19 +206,19 @@
 		229D07A31F76EFEA00A22E37 /* StatusCal */ = {
 			isa = PBXGroup;
 			children = (
-				1EC9068424508E7700C37606 /* Info.plist */,
+				1E0E5BC42453667C00D34828 /* Extensions */,
+				1E9130EE245202C500667106 /* Models */,
+				1EF722032450DAEB00545E18 /* Controllers */,
+				1EF722042450DB0800545E18 /* Cells */,
+				1EF722022450DAD000545E18 /* Services */,
+				1EF721FF2450D28F00545E18 /* Constants.swift */,
 				229D07A41F76EFEA00A22E37 /* AppDelegate.swift */,
-				229D07A61F76EFEA00A22E37 /* Assets.xcassets */,
+				1E7BD5A72451EB08002372EF /* StatusCalDebug.entitlements */,
 				229D07AC1F76EFEA00A22E37 /* StatusCal.entitlements */,
+				229D07A61F76EFEA00A22E37 /* Assets.xcassets */,
 				229D07A81F76EFEA00A22E37 /* MainMenu.xib */,
-				229D07B21F76FB0200A22E37 /* MainMenuController.swift */,
-				22D879111F8AD27A00D1956C /* CalendarController.swift */,
-				22B3E0951F9BEF4400DA4018 /* SettingsController.swift */,
-				1ED8AB8423EFE09400290AD7 /* AboutController.swift */,
-				229D07C11F78709A00A22E37 /* CalendarDayItem.swift */,
-				229D07C21F78709A00A22E37 /* CalendarDayItem.xib */,
-				1EB5FCAF244F3C2B00311991 /* CheckboxCell.swift */,
-				1EB5FCB1244F485F00311991 /* CalendarManager.swift */,
+				1E0E5BCF2453682900D34828 /* Localizable.strings */,
+				1EC9068424508E7700C37606 /* Info.plist */,
 				1EC9068A24508F7200C37606 /* InfoPlist.strings */,
 			);
 			path = StatusCal;
@@ -253,6 +320,7 @@
 				229D07A71F76EFEA00A22E37 /* Assets.xcassets in Resources */,
 				1EC9068824508F7200C37606 /* InfoPlist.strings in Resources */,
 				229D07C41F78709A00A22E37 /* CalendarDayItem.xib in Resources */,
+				1E0E5BCD2453682900D34828 /* Localizable.strings in Resources */,
 				229D07AA1F76EFEA00A22E37 /* MainMenu.xib in Resources */,
 				1E920C4123EF0B9400770DCD /* StatusCalLauncher.app in Resources */,
 			);
@@ -276,10 +344,17 @@
 				229D07B31F76FB0200A22E37 /* MainMenuController.swift in Sources */,
 				22B3E0961F9BEF4400DA4018 /* SettingsController.swift in Sources */,
 				22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */,
+				1E9130F02452067D00667106 /* UpdatesController.swift in Sources */,
 				229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */,
+				1E9130EB2451FA8500667106 /* NetworkManager.swift in Sources */,
 				1EB5FCB0244F3C2B00311991 /* CheckboxCell.swift in Sources */,
+				1EF722002450D28F00545E18 /* Constants.swift in Sources */,
 				1EB5FCB2244F485F00311991 /* CalendarManager.swift in Sources */,
 				229D07C31F78709A00A22E37 /* CalendarDayItem.swift in Sources */,
+				1E9130ED2451FB6300667106 /* VersionResponse.swift in Sources */,
+				1EF721FE2450D05A00545E18 /* DefaultsManager.swift in Sources */,
+				1E0E5BC32453667600D34828 /* String.swift in Sources */,
+				1E9130F224520AC900667106 /* UpdateState.swift in Sources */,
 				1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +370,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1E0E5BCF2453682900D34828 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E0E5BCE2453682900D34828 /* en */,
+				1E0E5BD02453682D00D34828 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		1EC9068A24508F7200C37606 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -487,7 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = StatusCal/StatusCal.entitlements;
+				CODE_SIGN_ENTITLEMENTS = StatusCal/StatusCalDebug.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

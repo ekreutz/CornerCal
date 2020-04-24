@@ -12,6 +12,15 @@ Download latest version: [CornerCal.dmg.zip](https://github.com/AlexeyBoldakov/C
 
 Note: this app looks great in Mojave's Dark Mode as well!
 
+# Version 2.5
+
+Changes:
+
+- New settings screen
+- Launch at login as option
+- Check for update
+
+
 # Version 2.4
 
 Changes:
@@ -38,12 +47,21 @@ UI Changes:
 - Right click menu added
 - Ru Locale added
 
-
+Calendar (with events indicators on date)
 ![preview](screenshot-01.png)
 
+App menu
 ![preview](screenshot-02.png)
 
+General settings
 ![preview](screenshot-03.png)
 
+Time Settings
 ![preview](screenshot-04.png)
+
+Calendar settings
+![preview](screenshot-05.png)
+
+Check for update screen
+![preview](screenshot-06.png)
 

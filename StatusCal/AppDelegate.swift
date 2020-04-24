@@ -11,28 +11,12 @@ import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+
+    private let defaultsManager = DefaultsManager.shared
     @IBOutlet weak var appController: MainMenuController!
     
     func applicationWillFinishLaunching(_ notification: Notification) {
-        let keys = SettingsKeys()
-        
-        // Set some defaults values for this app's settings
-        trySetDefaultValueFor(key: keys.SHOW_SECONDS_KEY, value: false)
-        trySetDefaultValueFor(key: keys.SHOW_DATE_KEY, value: true)
-        trySetDefaultValueFor(key: keys.SHOW_DAY_OF_WEEK_KEY, value: true)
-        trySetDefaultValueFor(key: keys.USE_HOURS_24_KEY, value: true)
-        trySetDefaultValueFor(key: keys.SHOW_AM_PM_KEY, value: true)
-        
-        let launcherAppId = "ru.alexvr.StatusCalLauncher"
-        let runningApps = NSWorkspace.shared.runningApplications
-        let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
-
-        SMLoginItemSetEnabled(launcherAppId as CFString, true)
-
-        if isRunning {
-            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
-        }
+        defaultsManager.trySetDefaults()
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -49,19 +33,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    private func defaultsContains(key: String) -> Bool {
-        return UserDefaults.standard.value(forKey: key) != nil
-    }
-    
-    private func trySetDefaultValueFor(key: String, value: Bool) {
-        if (!defaultsContains(key: key)) {
-            print(String(format: "setting default \"%@\"", key))
-            UserDefaults.standard.set(value, forKey: key)
+    private func initLaunchAtLogin() {
+        let isFirstLaunch = defaultsManager.getBool(forKey: defaultsManager.keys.IS_FIRST_LAUNCH)
+        
+        if isFirstLaunch {
+            SMLoginItemSetEnabled(Constants.launcherAppId as CFString, true)
+            defaultsManager.setBool(true, forKey: defaultsManager.keys.START_AT_LOGIN)
+            defaultsManager.setBool(false, forKey: defaultsManager.keys.IS_FIRST_LAUNCH)
         }
     }
-}
-
-extension Notification.Name {
-    static let killLauncher = Notification.Name("killLauncher")
 }
 

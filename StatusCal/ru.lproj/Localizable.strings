@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  StatusCal
+
+  Created by Alexey Boldakov on 24.04.2020.
+  Copyright © 2020 Alex Boldakov. All rights reserved.
+*/
+
+
+/* Update controller */
+"updates.checking.message" = "Проверка наличия обновлений...";
+"updates.checking.available" = "Новая версия уже доступна!";
+"updates.checking.newest" = "У Вас установлена новейшая версия";

@@ -25,6 +25,7 @@
             <connections>
                 <outlet property="calendarController" destination="SjA-MT-ZkN" id="OCh-2P-AQ8"/>
                 <outlet property="calendarsTableView" destination="K8f-jf-aBb" id="J8s-8Z-RbW"/>
+                <outlet property="loginLaunchBox" destination="ObC-Ca-uqw" id="oQz-dJ-bnA"/>
                 <outlet property="showAMPMBox" destination="oWQ-Vp-99m" id="ZpL-b7-vyS"/>
                 <outlet property="showDateBox" destination="qib-nV-OYJ" id="mow-4N-fy8"/>
                 <outlet property="showDayOfWeekBox" destination="sw3-iQ-hki" id="VIU-SJ-3w9"/>
@@ -49,6 +50,14 @@
                 <outlet property="monthLabel" destination="j2b-bI-i9v" id="x4g-bh-2an"/>
                 <outlet property="settingsWindow" destination="2fn-5w-bKg" id="AE8-fj-0H9"/>
                 <outlet property="statusMenu" destination="Rpa-pt-dYz" id="3aK-wK-BeF"/>
+                <outlet property="updatesWindow" destination="Xa3-IT-muU" id="bNp-t6-Ble"/>
+            </connections>
+        </customObject>
+        <customObject id="bKm-fo-jbW" customClass="UpdatesController" customModule="StatusCal" customModuleProvider="target">
+            <connections>
+                <outlet property="ckeckStatusMessage" destination="s8D-bL-Zde" id="hIN-eC-Ha5"/>
+                <outlet property="loadButton" destination="u7u-er-Zue" id="JPi-Qx-DfA"/>
+                <outlet property="progressBar" destination="WHp-es-boO" id="389-wa-dMD"/>
             </connections>
         </customObject>
         <menu showsStateColumn="NO" autoenablesItems="NO" id="Rpa-pt-dYz">
@@ -87,6 +96,12 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="z2P-Oo-AOP"/>
+                <menuItem title="Check for updates" keyEquivalent="U" id="Imf-7V-9Mt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkUpdatesClicked:" target="3bX-Tg-Ykk" id="YbV-op-o7w"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Quit" keyEquivalent="q" id="nwf-du-ktX">
                     <connections>
                         <action selector="quitClicked:" target="3bX-Tg-Ykk" id="C7n-u8-Xcg"/>
@@ -217,6 +232,29 @@ IA
                         </constraints>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
+                            <tabViewItem label="General" identifier="" id="UML-DR-xC2">
+                                <view key="view" id="sUd-EP-CxP">
+                                    <rect key="frame" x="10" y="33" width="585" height="377"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ObC-Ca-uqw">
+                                            <rect key="frame" x="29" y="334" width="115" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Launch at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nZO-xo-XSf">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="loginLaunchClicked:" target="MUN-z6-qDm" id="Rba-de-FKE"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ObC-Ca-uqw" secondAttribute="trailing" priority="750" constant="443" id="K6w-Tb-OsS"/>
+                                        <constraint firstItem="ObC-Ca-uqw" firstAttribute="top" secondItem="sUd-EP-CxP" secondAttribute="top" constant="27" id="hSs-YX-0L1"/>
+                                        <constraint firstItem="ObC-Ca-uqw" firstAttribute="leading" secondItem="sUd-EP-CxP" secondAttribute="leading" constant="31" id="w6p-ht-zlP"/>
+                                    </constraints>
+                                </view>
+                            </tabViewItem>
                             <tabViewItem label="Time options" identifier="" id="ljO-fF-h9p">
                                 <view key="view" id="A5B-9h-1S3">
                                     <rect key="frame" x="10" y="33" width="585" height="377"/>
@@ -484,7 +522,7 @@ IA
             </connections>
             <point key="canvasLocation" x="-257.5" y="545.5"/>
         </window>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="GM6-pk-LsQ">
+        <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="GM6-pk-LsQ">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="541" height="315"/>
@@ -573,6 +611,73 @@ IA
                 <outlet property="delegate" destination="g3l-Kl-VCn" id="jJ8-Le-wLM"/>
             </connections>
             <point key="canvasLocation" x="387.5" y="458.5"/>
+        </window>
+        <window title="Check for updates" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="Xa3-IT-muU">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <view key="contentView" id="Th4-R6-lr1">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="5yh-en-TbO">
+                        <rect key="frame" x="194" y="150" width="92" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="Otv-Yg-jS0"/>
+                            <constraint firstAttribute="width" constant="92" id="ek9-2E-RdS"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="calendar" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="PWJ-UJ-1EQ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <progressIndicator wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="WHp-es-boO">
+                        <rect key="frame" x="105" y="61" width="270" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="270" id="ZeY-nk-uri"/>
+                        </constraints>
+                    </progressIndicator>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u7u-er-Zue">
+                        <rect key="frame" x="159" y="59" width="162" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="IjR-MR-efR"/>
+                        </constraints>
+                        <buttonCell key="cell" type="roundTextured" title="Download latestd dw dw" bezelStyle="texturedRounded" alignment="center" borderStyle="border" inset="2" id="Zcv-LP-zGA">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="loadClicked:" target="bKm-fo-jbW" id="2ja-Im-lzq"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s8D-bL-Zde">
+                        <rect key="frame" x="52" y="101" width="377" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="373" id="JOM-zO-DdW"/>
+                        </constraints>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="GsJ-5L-YKI">
+                            <font key="font" metaFont="systemBold" size="15"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="u7u-er-Zue" firstAttribute="centerX" secondItem="Th4-R6-lr1" secondAttribute="centerX" id="0UK-8i-q6C"/>
+                    <constraint firstAttribute="bottom" secondItem="u7u-er-Zue" secondAttribute="bottom" constant="60" id="O3w-Pn-VR6"/>
+                    <constraint firstItem="5yh-en-TbO" firstAttribute="centerX" secondItem="Th4-R6-lr1" secondAttribute="centerX" id="bA2-Oq-QTB"/>
+                    <constraint firstItem="WHp-es-boO" firstAttribute="top" secondItem="5yh-en-TbO" secondAttribute="bottom" constant="70" id="fo7-Rd-2nh"/>
+                    <constraint firstItem="s8D-bL-Zde" firstAttribute="top" secondItem="5yh-en-TbO" secondAttribute="bottom" constant="30" id="gcm-I3-Uly"/>
+                    <constraint firstItem="5yh-en-TbO" firstAttribute="top" secondItem="Th4-R6-lr1" secondAttribute="top" constant="20" id="tYo-0z-Kca"/>
+                    <constraint firstItem="s8D-bL-Zde" firstAttribute="centerX" secondItem="Th4-R6-lr1" secondAttribute="centerX" id="u1C-IZ-Rc5"/>
+                    <constraint firstItem="WHp-es-boO" firstAttribute="centerX" secondItem="Th4-R6-lr1" secondAttribute="centerX" id="uoy-38-7CN"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="bKm-fo-jbW" id="jWh-9w-cbf"/>
+            </connections>
+            <point key="canvasLocation" x="365" y="57"/>
         </window>
     </objects>
     <resources>

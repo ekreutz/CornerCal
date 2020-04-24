@@ -2,18 +2,27 @@
   "images" : [
     {
       "filename" : "menu-1.png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "universal"
     },
     {
-      "filename" : "menu.png",
-      "idiom" : "universal",
-      "scale" : "2x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "dot-dark.png",
+      "idiom" : "universal"
     },
     {
-      "filename" : "menu-2.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dot-light.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
