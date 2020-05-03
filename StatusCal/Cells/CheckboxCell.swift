@@ -20,11 +20,11 @@ class CheckboxCell: NSTableCellView {
         }
     }
     
-    var delegate: CheckboxCellViewDelegate? = nil
+    weak var delegate: CheckboxCellViewDelegate? = nil
     var calendar: EKCalendar? = nil
     
 }
 
-protocol CheckboxCellViewDelegate {
+protocol CheckboxCellViewDelegate: class {
     func checkboxChecked(isChecked: Bool, calendarItem: EKCalendar)
 }

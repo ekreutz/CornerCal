@@ -18,6 +18,10 @@ struct SettingsKeys {
     let SHOW_EVENTS = "SHOW_EVENTS"
     let SELECTED_CALENDARS = "SELECTED_CALENDARS"
     let START_AT_LOGIN = "START_AT_LOGIN"
+    let SHOW_TIME_LINE = "SHOW_TIME_LINE"
+    let SHOW_ICON = "SHOW_ICON"
+    let CHECK_UPDATES_AUTO = "CHECK_UPDATES_AUTO"
+    let LAST_UPDATE_CHECK_DATE = "LAST_UPDATE_CHECK_DATE"
 }
 
 class DefaultsManager {
@@ -39,6 +43,9 @@ class DefaultsManager {
         trySetDefaultValueFor(key: keys.USE_HOURS_24_KEY, value: true)
         trySetDefaultValueFor(key: keys.SHOW_AM_PM_KEY, value: true)
         trySetDefaultValueFor(key: keys.START_AT_LOGIN, value: true)
+        trySetDefaultValueFor(key: keys.SHOW_TIME_LINE, value: true)
+        trySetDefaultValueFor(key: keys.SHOW_ICON, value: true)
+        trySetDefaultValueFor(key: keys.CHECK_UPDATES_AUTO, value: true)
     }
     
     private func trySetDefaultValueFor(key: String, value: Bool) {

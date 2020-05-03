@@ -1,26 +1,37 @@
 //
-//  UpdatesController.swift
+//  UpdatesTabViewItem.swift
 //  StatusCal
 //
-//  Created by Alexey Boldakov on 23.04.2020.
+//  Created by Alexey Boldakov on 30.04.2020.
 //  Copyright © 2020 Alex Boldakov. All rights reserved.
 //
 
 import Cocoa
 
 
-class UpdatesController: NSWindowController, NSWindowDelegate {
+class UpdatesTabViewItem: NSTabViewItem {
+    
+    private let locale = NSLocale.autoupdatingCurrent
+    private let defaultsManager = DefaultsManager.shared
+    private var isChecked = false
+    
+    @IBOutlet weak var ckeckStatusMessage: NSTextField! {
+        didSet {
+            
+        }
+    }
     
     @IBOutlet weak var progressBar: NSProgressIndicator!
     
+    @IBOutlet weak var checkUpdatesButton: NSButton!
+    
     @IBOutlet weak var loadButton: NSButton!
     
-    @IBOutlet weak var ckeckStatusMessage: NSTextField!
-    
-    let locale = NSLocale.autoupdatingCurrent
-    
-    @IBAction func loadClicked(_ sender: NSButton) {
-        openUrl(link: Constants.lastVersionDownloadURL)
+    @IBOutlet weak var checkAutomaticallyCheckbox: NSButton! {
+        didSet {
+            let isAuto = defaultsManager.getBool(forKey: defaultsManager.keys.CHECK_UPDATES_AUTO)
+            checkAutomaticallyCheckbox.state = isAuto ? .on : .off
+        }
     }
     
     private var state: UpdateState = .startCheck {
@@ -29,20 +40,32 @@ class UpdatesController: NSWindowController, NSWindowDelegate {
         }
     }
     
-    override init(window: NSWindow?) {
-        super.init(window: window)
+    @IBAction func loadClicked(_ sender: NSButton) {
+        openUrl(link: Constants.lastVersionDownloadURL)
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    func windowDidBecomeMain(_ notification: Notification) {
-        self.state = .startCheck
+    @IBAction func checkForUpdatesClicked(_ sender: NSButton) {
         checkForUpdates()
     }
     
+    @IBAction func checkAutoClicked(_ sender: NSButton) {
+        defaultsManager.setBool(sender.state == .on, forKey: defaultsManager.keys.CHECK_UPDATES_AUTO)
+    }
+    
+    func startCheckForce() {
+        checkForUpdates()
+    }
+    
+    func stastCheckIfNeed() {
+        let isAuto = defaultsManager.getBool(forKey: defaultsManager.keys.CHECK_UPDATES_AUTO)
+        if isAuto {
+            checkForUpdates()
+        }
+     }
+    
     private func checkForUpdates() {
+        state = .startCheck
+        
         NetworkManager.shared.checkLastVersion(completion: { (version, error) in
             let dictionary = Bundle.main.infoDictionary!
             let current = dictionary["CFBundleShortVersionString"] as! String
@@ -71,7 +94,7 @@ class UpdatesController: NSWindowController, NSWindowDelegate {
     
     private func showLoadingState() {
         DispatchQueue.main.async {
-//            self.ckeckStatusMessage.stringValue = NSLocalizedString("updates.checking.message", comment: "")
+            self.ckeckStatusMessage.stringValue = NSLocalizedString("updates.checking.message", comment: "")
             self.ckeckStatusMessage.stringValue = "updates.checking.message".localized
             self.loadButton.isHidden = true
             self.progressBar.startAnimation(nil)
@@ -99,5 +122,5 @@ class UpdatesController: NSWindowController, NSWindowDelegate {
         if NSWorkspace.shared.open(url) {
             print("Start download link opened")
         }
-    }
+    }    
 }

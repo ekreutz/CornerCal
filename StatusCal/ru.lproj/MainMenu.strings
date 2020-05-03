@@ -7,20 +7,12 @@
 "Imf-7V-9Mt.title" = "Проверить наличие обновлений";
 "nwf-du-ktX.title" = "Выход";
 
-/* Calendar */
-"VJE-7c-auX.title" = "[Calendar Collection]";
-"5Js-yS-1ZZ.title" = "Сентябрь 2015";
-"JkT-H5-zCl.title" = "◀";
-"gys-YA-Nr4.title" = "▶";
-
 
 /* Settings */
 "2fn-5w-bKg.title" = "Настройки";
 "UML-DR-xC2.label" = "Основные";
 "nZO-xo-XSf.title" = "Автозапуск при входе в систему";
-"ljO-fF-h9p.label" = "Настройки времени";
-"V7g-VS-7tR.title" = "Настройки времени";
-"fRr-jF-hAT.title" = "Настройки даты";
+"ljO-fF-h9p.label" = "Время";
 "BDg-ZQ-zFx.title" = "Показывать дату";
 "SJf-Zh-g4M.title" = "Показывать день недели";
 "X0B-xC-XWg.title" = "24-часовой формат";
@@ -33,7 +25,7 @@
 /* About */
 "jdE-c0-rAD.title" = "О приложении";
 "b6y-2e-ZIm.title" = "Версия";
-"04C-Hw-fMT.title" = "Copyright © 2020 Алексей Болдаков. Все права защищены.";
+"04C-Hw-fMT.title" = "Copyright © 2020 Алексей Болдаков.";
 "saC-ne-fH1.title" = "Страница проекта";
 
 

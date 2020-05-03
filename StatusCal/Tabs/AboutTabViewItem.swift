@@ -1,18 +1,15 @@
 //
-//  AboutController.swift
-//  CornerCal
+//  AboutTabViewItem.swift
+//  StatusCal
 //
-//  Created by Alex Boldakov on 09.02.2020.
+//  Created by Alexey Boldakov on 30.04.2020.
 //  Copyright © 2020 Alex Boldakov. All rights reserved.
 //
 
 import Cocoa
 
-class AboutController: NSObject, NSWindowDelegate {
-    
-    @IBAction func projectClicked(_ sender: NSButton) {
-        openUrl(link: sender.title)
-    }
+
+class AboutTabViewItem: NSTabViewItem {
     
     @IBOutlet weak var versionLabel: NSTextField! {
         didSet {
@@ -20,8 +17,16 @@ class AboutController: NSObject, NSWindowDelegate {
         }
     }
     
-    override init() {
-        super.init()
+    @IBAction func projectClicked(_ sender: NSButton) {
+        openUrl(link: Constants.projectPageURL)
+    }
+    
+    @IBAction func termsClicked(_ sender: NSButton) {
+        openUrl(link: Constants.projectPageURL)
+    }
+    
+    @IBAction func privacyClicked(_ sender: NSButton) {
+        openUrl(link: Constants.projectPageURL)
     }
     
     private func openUrl(link: String) {

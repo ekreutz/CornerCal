@@ -10,32 +10,29 @@ import Cocoa
 
 class MainMenuController: NSObject {
     
-    @IBOutlet weak var controller: CalendarController!
-    
     @IBOutlet weak var statusMenu: NSMenu!
     
     @IBOutlet weak var appMenu: NSMenu!
     
     @IBOutlet weak var monthLabel: NSButton!
     
-    @IBOutlet weak var buttonLeft: NSButton!
+    @IBOutlet weak var buttonLeft: NSButton! 
     
     @IBOutlet weak var buttonRight: NSButton!
     
     @IBOutlet weak var collectionView: NSCollectionView!
     
-    @IBOutlet weak var settingsWindow: NSWindow!
+    @IBOutlet weak var controller: CalendarController!
     
-    @IBOutlet weak var aboutWindow: NSWindow!
+    @IBOutlet weak var settingsController: SettingsController!
     
-    @IBOutlet weak var updatesWindow: NSWindow!
-    
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    private let defaultsManager = DefaultsManager.shared
     
     @IBAction func openSettingsClicked(_ sender: NSMenuItem) {
-        let settingsWindowController = NSWindowController.init(window: settingsWindow)
-        settingsWindowController.showWindow(sender)
+        settingsController.showWindow(sender)
         NSApp.activate(ignoringOtherApps: true)
+        settingsController.activateGeneralTab()
     }
     
     @IBAction func openCalendarClick(_ sender: NSMenuItem) {
@@ -43,22 +40,22 @@ class MainMenuController: NSObject {
     }
     
     @IBAction func aboutClicked(_ sender: NSMenuItem) {
-        let aboutWindowController = NSWindowController.init(window: aboutWindow)
-        aboutWindowController.showWindow(sender)
+        settingsController.showWindow(sender)
         NSApp.activate(ignoringOtherApps: true)
+        settingsController.activateAboutTab()
     }
     
     @IBAction func donateClick(_ sender: NSMenuItem) {
-        let url = URL(string: "https://paypal.me/boldakov")!
+        let url = URL(string: Constants.donateURL)!
         if NSWorkspace.shared.open(url) {
             print("default browser was successfully opened")
         }
     }
     
     @IBAction func checkUpdatesClicked(_ sender: NSMenuItem) {
-        let updatesWindowController = UpdatesController.init(window: updatesWindow)
-        updatesWindowController.showWindow(sender)
+        settingsController.showWindow(sender)
         NSApp.activate(ignoringOtherApps: true)
+        settingsController.activateUpdatesTab()
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
@@ -78,12 +75,27 @@ class MainMenuController: NSObject {
     }
     
     private func updateMenuTime() {
-        statusItem.button?.title = controller.getFormattedDate()
+        let isShowIcon = defaultsManager.getBool(forKey: defaultsManager.keys.SHOW_ICON)
+        let isShowTimeLine = defaultsManager.getBool(forKey: defaultsManager.keys.SHOW_TIME_LINE)
+        
+        if isShowIcon {
+            statusItem.button?.image = NSImage.init(named: "status-icon")
+            statusItem.button?.image?.size = NSMakeSize(16.0, 16.0)
+            statusItem.button?.imagePosition = isShowTimeLine ? .imageLeft : .imageOnly
+        } else {
+            statusItem.button?.image = nil
+        }
+        
+        if isShowTimeLine {
+            let prefix =  isShowIcon ? " " : ""
+            statusItem.button?.title = prefix + controller.getFormattedDate()
+        } else {
+            statusItem.button?.title = ""
+        }
     }
     
     private func updateCalendar() {
         monthLabel.title = controller.getMonth()
-        
         applyUIModifications()
         updateMonthLabelState()
         collectionView.reloadData()
@@ -132,7 +144,6 @@ class MainMenuController: NSObject {
         let point = NSPoint(x: sender.frame.origin.x, y: sender.frame.origin.y - (sender.frame.height / 4))
         
         if event.type == NSEvent.EventType.leftMouseUp {
-            //statusMenu.removeItem(eventsMenuItem)
             statusMenu.popUp(positioning: nil, at: point, in: sender.superview)
         } else {
             appMenu.popUp(positioning: nil, at: point, in: sender.superview)

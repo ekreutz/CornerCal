@@ -11,7 +11,6 @@
 		1E0E5BCD2453682900D34828 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E0E5BCF2453682900D34828 /* Localizable.strings */; };
 		1E9130EB2451FA8500667106 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9130EA2451FA8500667106 /* NetworkManager.swift */; };
 		1E9130ED2451FB6300667106 /* VersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9130EC2451FB6300667106 /* VersionResponse.swift */; };
-		1E9130F02452067D00667106 /* UpdatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9130EF2452067D00667106 /* UpdatesController.swift */; };
 		1E9130F224520AC900667106 /* UpdateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9130F124520AC900667106 /* UpdateState.swift */; };
 		1E920C3123EF0A7300770DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E920C3023EF0A7300770DCD /* AppDelegate.swift */; };
 		1E920C3323EF0A7500770DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E920C3223EF0A7500770DCD /* Assets.xcassets */; };
@@ -21,8 +20,13 @@
 		1E92D46D23F03EE600B56673 /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E92D46C23F03EE600B56673 /* Main.xib */; };
 		1EB5FCB0244F3C2B00311991 /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5FCAF244F3C2B00311991 /* CheckboxCell.swift */; };
 		1EB5FCB2244F485F00311991 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5FCB1244F485F00311991 /* CalendarManager.swift */; };
+		1EC46D5924548BD00015ABB5 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC46D5824548BD00015ABB5 /* Bundle.swift */; };
 		1EC9068824508F7200C37606 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EC9068A24508F7200C37606 /* InfoPlist.strings */; };
-		1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8AB8423EFE09400290AD7 /* AboutController.swift */; };
+		1EEDB2E8245ABC3800E48BF1 /* AboutTabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDB2E7245ABC3800E48BF1 /* AboutTabViewItem.swift */; };
+		1EEDB2EA245AC33600E48BF1 /* UpdatesTabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDB2E9245AC33600E48BF1 /* UpdatesTabViewItem.swift */; };
+		1EEDB2EC245AC7A000E48BF1 /* CalendarTabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDB2EB245AC7A000E48BF1 /* CalendarTabViewItem.swift */; };
+		1EEDB2F1245ADF7800E48BF1 /* GeneralTabViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDB2F0245ADF7800E48BF1 /* GeneralTabViewItem.swift */; };
+		1EEDB2F3245B6A8900E48BF1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDB2F2245B6A8900E48BF1 /* Button.swift */; };
 		1EF721FE2450D05A00545E18 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF721FD2450D05A00545E18 /* DefaultsManager.swift */; };
 		1EF722002450D28F00545E18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF721FF2450D28F00545E18 /* Constants.swift */; };
 		229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D07A41F76EFEA00A22E37 /* AppDelegate.swift */; };
@@ -67,7 +71,6 @@
 		1E7BD5A72451EB08002372EF /* StatusCalDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatusCalDebug.entitlements; sourceTree = "<group>"; };
 		1E9130EA2451FA8500667106 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1E9130EC2451FB6300667106 /* VersionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionResponse.swift; sourceTree = "<group>"; };
-		1E9130EF2452067D00667106 /* UpdatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesController.swift; sourceTree = "<group>"; };
 		1E9130F124520AC900667106 /* UpdateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateState.swift; sourceTree = "<group>"; };
 		1E920C2E23EF0A7300770DCD /* StatusCalLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusCalLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E920C3023EF0A7300770DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,10 +81,15 @@
 		1E92D46C23F03EE600B56673 /* Main.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Main.xib; sourceTree = "<group>"; };
 		1EB5FCAF244F3C2B00311991 /* CheckboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
 		1EB5FCB1244F485F00311991 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		1EC46D5824548BD00015ABB5 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		1EC9068424508E7700C37606 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EC9068924508F7200C37606 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1EC9068B24508F7400C37606 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1ED8AB8423EFE09400290AD7 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		1EEDB2E7245ABC3800E48BF1 /* AboutTabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTabViewItem.swift; sourceTree = "<group>"; };
+		1EEDB2E9245AC33600E48BF1 /* UpdatesTabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTabViewItem.swift; sourceTree = "<group>"; };
+		1EEDB2EB245AC7A000E48BF1 /* CalendarTabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTabViewItem.swift; sourceTree = "<group>"; };
+		1EEDB2F0245ADF7800E48BF1 /* GeneralTabViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTabViewItem.swift; sourceTree = "<group>"; };
+		1EEDB2F2245B6A8900E48BF1 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1EF721FD2450D05A00545E18 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		1EF721FF2450D28F00545E18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		229D07A11F76EFEA00A22E37 /* StatusCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatusCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				1E0E5BC22453667600D34828 /* String.swift */,
+				1EC46D5824548BD00015ABB5 /* Bundle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -152,6 +161,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1EEDB2ED245ADBAC00E48BF1 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				1EEDB2E7245ABC3800E48BF1 /* AboutTabViewItem.swift */,
+				1EEDB2E9245AC33600E48BF1 /* UpdatesTabViewItem.swift */,
+				1EEDB2EB245AC7A000E48BF1 /* CalendarTabViewItem.swift */,
+				1EEDB2F0245ADF7800E48BF1 /* GeneralTabViewItem.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		1EEDB2F4245B6A9200E48BF1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1EEDB2F2245B6A8900E48BF1 /* Button.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1EF722022450DAD000545E18 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,8 +196,6 @@
 				229D07B21F76FB0200A22E37 /* MainMenuController.swift */,
 				22D879111F8AD27A00D1956C /* CalendarController.swift */,
 				22B3E0951F9BEF4400DA4018 /* SettingsController.swift */,
-				1ED8AB8423EFE09400290AD7 /* AboutController.swift */,
-				1E9130EF2452067D00667106 /* UpdatesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -209,8 +235,10 @@
 				1E0E5BC42453667C00D34828 /* Extensions */,
 				1E9130EE245202C500667106 /* Models */,
 				1EF722032450DAEB00545E18 /* Controllers */,
+				1EEDB2ED245ADBAC00E48BF1 /* Tabs */,
 				1EF722042450DB0800545E18 /* Cells */,
 				1EF722022450DAD000545E18 /* Services */,
+				1EEDB2F4245B6A9200E48BF1 /* Views */,
 				1EF721FF2450D28F00545E18 /* Constants.swift */,
 				229D07A41F76EFEA00A22E37 /* AppDelegate.swift */,
 				1E7BD5A72451EB08002372EF /* StatusCalDebug.entitlements */,
@@ -341,21 +369,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EEDB2EC245AC7A000E48BF1 /* CalendarTabViewItem.swift in Sources */,
 				229D07B31F76FB0200A22E37 /* MainMenuController.swift in Sources */,
+				1EEDB2F1245ADF7800E48BF1 /* GeneralTabViewItem.swift in Sources */,
+				1EC46D5924548BD00015ABB5 /* Bundle.swift in Sources */,
 				22B3E0961F9BEF4400DA4018 /* SettingsController.swift in Sources */,
+				1EEDB2F3245B6A8900E48BF1 /* Button.swift in Sources */,
 				22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */,
-				1E9130F02452067D00667106 /* UpdatesController.swift in Sources */,
 				229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */,
+				1EEDB2E8245ABC3800E48BF1 /* AboutTabViewItem.swift in Sources */,
 				1E9130EB2451FA8500667106 /* NetworkManager.swift in Sources */,
 				1EB5FCB0244F3C2B00311991 /* CheckboxCell.swift in Sources */,
 				1EF722002450D28F00545E18 /* Constants.swift in Sources */,
 				1EB5FCB2244F485F00311991 /* CalendarManager.swift in Sources */,
 				229D07C31F78709A00A22E37 /* CalendarDayItem.swift in Sources */,
+				1EEDB2EA245AC33600E48BF1 /* UpdatesTabViewItem.swift in Sources */,
 				1E9130ED2451FB6300667106 /* VersionResponse.swift in Sources */,
 				1EF721FE2450D05A00545E18 /* DefaultsManager.swift in Sources */,
 				1E0E5BC32453667600D34828 /* String.swift in Sources */,
 				1E9130F224520AC900667106 /* UpdateState.swift in Sources */,
-				1ED8AB8523EFE09400290AD7 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +449,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -444,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexvr.StatusCalLauncher;
@@ -505,12 +537,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -559,11 +592,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -582,7 +616,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexvr.StatusCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -605,7 +639,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexvr.StatusCal;
 				PRODUCT_NAME = "$(TARGET_NAME)";

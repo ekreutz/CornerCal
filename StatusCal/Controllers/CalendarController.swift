@@ -20,33 +20,33 @@ struct Day {
 }
 
 class CalendarController: NSObject {
-    var calendar = Calendar.current
-    let formatter = DateFormatter()
-    let monthFormatter = DateFormatter()
-    var locale: Locale!
-    var timer: Timer? = nil
+    private var calendar = Calendar.current
+    private let formatter = DateFormatter()
+    private let monthFormatter = DateFormatter()
+    private var locale: Locale!
+    private var timer: Timer? = nil
     
-    var shownItemCount = 0
-    var weekdays: [String] = []
-    var daysInWeek = 0
-    var monthOffset = 0
+    private var shownItemCount = 0
+    private var weekdays: [String] = []
+    private var daysInWeek = 0
+    private var monthOffset = 0
     
-    var currentMonth: Date? = nil
-    var lastFirstWeekdayLastMonth: Date? = nil
-    var lastTick: Date? = Date()
-    var tick: Date? = nil
-    var tickInterval: Double = 60
+    private var currentMonth: Date? = nil
+    private var lastFirstWeekdayLastMonth: Date? = nil
+    private var lastTick: Date? = Date()
+    private var tick: Date? = nil
+    private var tickInterval: Double = 60
     
-    var onTimeUpdate: (() -> ())? = nil
-    var onCalendarUpdate: (() -> ())? = nil
-    var eventStore = CalendarManager.shared
-    var calendarGranted: Bool = false
+    private var onTimeUpdate: (() -> ())? = nil
+    private var onCalendarUpdate: (() -> ())? = nil
+    private var eventStore = CalendarManager.shared
+    private var calendarGranted: Bool = false
     
-    var events: Dictionary<Int, Int> = [:]
-    var showEvents: Bool = false
-    var enabledCalendars: [String: String] = [:]
+    private var events: Dictionary<Int, Int> = [:]
+    private var showEvents: Bool = false
+    private var enabledCalendars: [String: String] = [:]
     
-    let defaultsManager = DefaultsManager.shared
+    private let defaultsManager = DefaultsManager.shared
     
     override init() {
         super.init()

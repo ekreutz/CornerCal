@@ -13,7 +13,12 @@ class CalendarDayItem: NSCollectionViewItem {
     public func setHasBackground(hasBackground: Bool) {
         if (hasBackground) {
             view.layer?.cornerRadius = (view.layer?.frame.width)! / 2
-            view.layer?.backgroundColor = NSColor.controlAccentColor.cgColor
+            
+            if #available(OSX 10.14, *) {
+                view.layer?.backgroundColor = NSColor.controlAccentColor.cgColor
+            } else {
+                view.layer?.backgroundColor = NSColor.controlColor.cgColor
+            }
             textField?.textColor = NSColor.white
         } else {
             view.layer?.cornerRadius = 0

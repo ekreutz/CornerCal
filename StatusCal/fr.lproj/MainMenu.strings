@@ -1,0 +1,33 @@
+
+/* Root menu */
+"0GA-Pk-dni.title" = "Préférences...";
+"q73-Mh-ATb.title" = "Calendrier ouvert";
+"5Ab-Tp-fCl.title" = "À propos de StatusCal";
+"9E8-Hb-g0V.title" = "Soutenez ce projet";
+"Imf-7V-9Mt.title" = "Vérifier les mises à jour";
+"nwf-du-ktX.title" = "Quit";
+
+
+/* Settings */
+"2fn-5w-bKg.title" = "Préférences";
+"UML-DR-xC2.label" = "Général";
+"nZO-xo-XSf.title" = "Lancer à la connexion";
+"ljO-fF-h9p.label" = "Temps";
+"BDg-ZQ-zFx.title" = "Afficher la date";
+"SJf-Zh-g4M.title" = "Afficher le jour de la semaine";
+"X0B-xC-XWg.title" = "Utilisez une horloge de 24 heures";
+"YBS-XV-zIF.title" = "Afficher l'heure en secondes";
+"wHM-Vz-n6I.title" = "Afficher AM/PM";
+"beM-E2-q1p.label" = "Calendrier";
+"WXx-sH-f08.title" = "Afficher les événements du calendrier";
+
+
+/* About */
+"jdE-c0-rAD.title" = "À propos de";
+"b6y-2e-ZIm.title" = "Version";
+"04C-Hw-fMT.title" = "© 2020 Alex Boldakov";
+"saC-ne-fH1.title" = "Page du projet";
+
+
+/* Updates */
+"Zcv-LP-zGA.title" = "Télécharger la dernière version";
